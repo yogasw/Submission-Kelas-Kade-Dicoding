@@ -26,7 +26,6 @@ class FootbalItemUI : AnkoComponent<ViewGroup> {
 
             imageView{
                 id= ivImage
-                backgroundColor = Color.BLACK
                 setImageResource(R.drawable.english_league_1)
             }.lparams(
                 width = dip(50),

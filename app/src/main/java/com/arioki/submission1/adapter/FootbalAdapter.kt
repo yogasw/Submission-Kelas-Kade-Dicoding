@@ -7,15 +7,15 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.arioki.submission1.ui.FootbalItemUI
 import com.arioki.submission1.data.FootballItem
+import com.arioki.submission1.ui.FootbalItemUI
 import com.squareup.picasso.Picasso
-import org.jetbrains.anko.*
+import org.jetbrains.anko.AnkoContext
 
 class FootbalAdapter(
     val context: Context,
-    val items: List<FootballItem>,
-    val listener: (FootballItem) -> Unit
+    private val items: List<FootballItem>,
+    private val listener: (FootballItem) -> Unit
 ) :
     RecyclerView.Adapter<FootbalAdapter.FootbalViewHolder>() {
 
@@ -42,13 +42,13 @@ class FootbalAdapter(
     }
 
     class FootbalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var tvName: TextView = itemView.findViewById(FootbalItemUI.tvName)
-        var image: ImageView = itemView.findViewById(FootbalItemUI.ivImage)
-        var vlItem: LinearLayout = itemView.findViewById(FootbalItemUI.vlItem)
-        var clickListener: ((View) -> Unit)? = null
+        private val tvName: TextView = itemView.findViewById(FootbalItemUI.tvName)
+        private val image: ImageView = itemView.findViewById(FootbalItemUI.ivImage)
+        val vlItem: LinearLayout = itemView.findViewById(FootbalItemUI.vlItem)
+        val clickListener: ((View) -> Unit)? = null
         fun bindItem(items: FootballItem, listener: (FootballItem) -> Unit) {
             tvName.text = items.name
-            items.badge?.let { Picasso.get().load(it).into(image) }
+            items.badge.let { Picasso.get().load(it).into(image) }
             itemView.setOnClickListener{
                 listener(items)
             }

@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
             }
             badge.recycle()
             verticalLayout {
+
                 var club_list = recyclerView {
                     lparams(
                         width = matchParent,
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                             it.badge,
                             it.description
                         )
-                        startActivity<DetailActivity>(
+                        startActivity<DetailLigaActivity>(
                             "FootballItem" to data
                         )
 

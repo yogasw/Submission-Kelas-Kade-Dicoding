@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/ivHomeLogo"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvHomeName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/home_team"
+        app:layout_constraintEnd_toEndOf="@+id/ivHomeLogo"
+        app:layout_constraintStart_toStartOf="@+id/ivHomeLogo"
+        app:layout_constraintTop_toBottomOf="@+id/ivHomeLogo" />
+
+    <TextView
+        android:id="@+id/tvScoreHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="-"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvHomeName"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/ivHomeLogo" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvScoreHome"
+        app:layout_constraintEnd_toStartOf="@+id/ivAwayName"
+        app:layout_constraintStart_toEndOf="@+id/ivHomeLogo"
+        app:layout_constraintTop_toTopOf="@+id/tvScoreHome" />
+
+    <TextView
+        android:id="@+id/tvAwayScore"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:text="-"
+        android:textSize="50sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAwayName"
+        app:layout_constraintStart_toEndOf="@+id/textView4"
+        app:layout_constraintTop_toTopOf="@+id/ivAwayName" />
+
+    <ImageView
+        android:id="@+id/ivAwayName"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvAwayName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/away_team"
+        app:layout_constraintEnd_toEndOf="@+id/ivAwayName"
+        app:layout_constraintStart_toStartOf="@+id/ivAwayName"
+        app:layout_constraintTop_toBottomOf="@+id/ivAwayName" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,12 +13,18 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_liga.*
 
 class DetailLigaActivity : AppCompatActivity() {
-
+    lateinit var data: FootballItem
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_liga)
+        data = intent.getParcelableExtra("FootballItem")
         initDetailLiga()
         initTab()
+    }
+
+    public fun getId(): Int {
+        val id = data.id.toString()
+        return id.toInt()
     }
 
     private fun initTab() {
@@ -29,10 +35,7 @@ class DetailLigaActivity : AppCompatActivity() {
 
     private fun initDetailLiga() {
         shimerInfoLeague.startShimmerAnimation()
-        val data: FootballItem = intent.getParcelableExtra("FootballItem")
-        val id = data.id.toString()
-        App.instances.repository.leaguesLookup(id.toInt(), {
-
+        App.instances.repository.leaguesLookup(getId(), {
             it.run {
                 iv_str_league.text = strLeague
                 iv_country.text = strCountry

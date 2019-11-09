@@ -37,6 +37,8 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                     }
                     result?.let {
                         onSuccess(it[0])
+                    } ?: run {
+                        onError(Throwable("Data Empty!"))
                     }
                 } else {
                     onError(Throwable("Something went wrong!"))
@@ -64,7 +66,7 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                                 strEvent,
                                 dateEvent,
                                 strTime,
-                                strAwayTeam,
+                                strHomeTeam,
                                 strAwayTeam,
                                 intHomeScore,
                                 intAwayScore,
@@ -74,6 +76,8 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                     }
                     result?.let {
                         onSuccess(it)
+                    } ?: run {
+                        onError(Throwable("Data Empty!"))
                     }
                 } else {
                     onError(Throwable("Something went wrong!"))
@@ -101,7 +105,7 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                                 strEvent,
                                 dateEvent,
                                 strTime,
-                                strAwayTeam,
+                                strHomeTeam,
                                 strAwayTeam,
                                 intHomeScore,
                                 intAwayScore,
@@ -111,6 +115,8 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                     }
                     result?.let {
                         onSuccess(it)
+                    } ?: run {
+                        onError(Throwable("Data Empty!"))
                     }
                 } else {
                     onError(Throwable("Something went wrong!"))

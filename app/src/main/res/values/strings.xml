@@ -51,4 +51,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="away_team">Away Team</string>
     <string name="home_team">Home Team</string>
+    <string name="logo_home_team">Logo Home Team</string>
+    <string name="logo_away_team">Logo Away team</string>
+    <string name="colon">:</string>
+    <string name="min">-</string>
 </resources>

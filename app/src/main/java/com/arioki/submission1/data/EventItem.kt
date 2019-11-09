@@ -1,5 +1,9 @@
 package com.arioki.submission1.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class EventItem(
     var id: String?,
     var name: String?,
@@ -9,5 +13,5 @@ data class EventItem(
     val awayTeam: String?,
     val homeTeamScore: String?,
     val awayTeamScore: String?,
-    var thumbnails: Any?
-)
+    var thumbnails: String?
+) : Parcelable

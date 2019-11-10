@@ -1,6 +1,7 @@
 package com.arioki.submission1.remote
 
 import com.arioki.submission1.BuildConfig
+import com.arioki.submission1.remote.response.DetailEventResponse
 import com.arioki.submission1.remote.response.LeaguesLookupResponse
 import com.arioki.submission1.remote.response.NextEventResponse
 import com.arioki.submission1.remote.response.PastEventResponse
@@ -28,5 +29,9 @@ object ThesportsDBApi {
 
         @GET("eventspastleague.php")
         fun leaguesPastEvent(@Query("id") id: Int): Call<PastEventResponse>
+
+        @GET("lookupevent.php")
+        fun lookupevent(@Query("id") id: Int): Call<DetailEventResponse>
+
     }
 }

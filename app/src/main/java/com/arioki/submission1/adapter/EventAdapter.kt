@@ -38,12 +38,12 @@ class EventAdapter(
     }
 
     class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val tvHomeName: TextView = view.tvHomeName
-        private val tvAwayName: TextView = view.tvAwayName
-        private val tvHomesScore: TextView = view.tvHomeScore
-        private val tvAwayScore: TextView = view.tvAwayScore
-        private val ivHomeLogo: ImageView = view.ivHomeLogo
-        private val ivAwayLogo: ImageView = view.ivAwayLogo
+        private val tvHomeName: TextView = view.tvDetailHomeName
+        private val tvAwayName: TextView = view.tvDetailAwayName
+        private val tvHomesScore: TextView = view.tvDetailHomeScore
+        private val tvAwayScore: TextView = view.tvDetailAwayScore
+        private val ivHomeLogo: ImageView = view.ivDetailHomeLogo
+        private val ivAwayLogo: ImageView = view.ivDetailAwayLogo
 
         fun bindItem(items: EventItem, listener: (EventItem) -> Unit) {
             tvHomeName.text = items.homeTeam
@@ -54,7 +54,6 @@ class EventAdapter(
                 .load("https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png")
                 .into(ivHomeLogo, object : Callback {
                     override fun onSuccess() {
-
                     }
 
                     override fun onError(e: Exception?) {
@@ -73,6 +72,9 @@ class EventAdapter(
                         Log.d("LOGAPP", "error")
                     }
                 })
+            itemView.setOnClickListener {
+                listener(items)
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 package com.arioki.submission1.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,6 +28,9 @@ class PastEventFragment : Fragment() {
         App.instances.repository.pastEvent(id, {
             hiddenSimmer()
             adapter = EventAdapter(context, it) {
+                val intent = Intent(context, DetailEventActivity::class.java)
+                intent.putExtra("idEvent", it.id?.toInt())
+                startActivity(intent)
             }
             rvPastEvent.layoutManager = layoutManager
             rvPastEvent.adapter = adapter
@@ -45,6 +49,4 @@ class PastEventFragment : Fragment() {
         super.onResume()
         shimmerPastEvent.startShimmerAnimation()
     }
-
-
 }

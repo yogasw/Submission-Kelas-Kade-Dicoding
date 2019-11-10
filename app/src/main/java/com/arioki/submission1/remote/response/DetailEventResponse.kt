@@ -11,7 +11,7 @@ data class DetailEventResponse(
         @SerializedName("dateEvent")
         val dateEvent: String,
         @SerializedName("dateEventLocal")
-        val dateEventLocal: Any,
+        val dateEventLocal: String,
         @SerializedName("idAwayTeam")
         val idAwayTeam: String,
         @SerializedName("idEvent")

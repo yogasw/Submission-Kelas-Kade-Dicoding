@@ -1,6 +1,7 @@
 package com.arioki.submission1.ui
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -28,6 +29,10 @@ class NextMatchFragment : Fragment() {
         App.instances.repository.nextEvent(id, {
             hiddenSimmer()
             adapter = EventAdapter(context, it) {
+                it
+                val intent = Intent(context, DetailEventActivity::class.java)
+                intent.putExtra("idEvent", it.id?.toInt())
+                startActivity(intent)
             }
             rvNextMatch.layoutManager = layoutManager
             rvNextMatch.adapter = adapter

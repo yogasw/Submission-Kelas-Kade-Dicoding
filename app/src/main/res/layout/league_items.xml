@@ -7,7 +7,7 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/ivHomeLogo"
+        android:id="@+id/ivDetailHomeLogo"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginStart="24dp"
@@ -18,26 +18,26 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvHomeName"
+        android:id="@+id/tvDetailHomeName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/home_team"
-        app:layout_constraintEnd_toEndOf="@+id/ivHomeLogo"
-        app:layout_constraintStart_toStartOf="@+id/ivHomeLogo"
-        app:layout_constraintTop_toBottomOf="@+id/ivHomeLogo" />
+        app:layout_constraintEnd_toEndOf="@+id/ivDetailHomeLogo"
+        app:layout_constraintStart_toStartOf="@+id/ivDetailHomeLogo"
+        app:layout_constraintTop_toBottomOf="@+id/ivDetailHomeLogo" />
 
     <TextView
-        android:id="@+id/tvHomeScore"
+        android:id="@+id/tvDetailHomeScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:text="@string/min"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHomeName"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetailHomeName"
         app:layout_constraintEnd_toStartOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/ivHomeLogo" />
+        app:layout_constraintTop_toTopOf="@+id/ivDetailHomeLogo" />
 
     <TextView
         android:id="@+id/textView4"
@@ -45,25 +45,25 @@
         android:layout_height="wrap_content"
         android:text="@string/colon"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvHomeScore"
-        app:layout_constraintEnd_toStartOf="@+id/ivAwayLogo"
-        app:layout_constraintStart_toEndOf="@+id/ivHomeLogo"
-        app:layout_constraintTop_toTopOf="@+id/tvHomeScore" />
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetailHomeScore"
+        app:layout_constraintEnd_toStartOf="@+id/ivDetailAwayLogo"
+        app:layout_constraintStart_toEndOf="@+id/ivDetailHomeLogo"
+        app:layout_constraintTop_toTopOf="@+id/tvDetailHomeScore" />
 
     <TextView
-        android:id="@+id/tvAwayScore"
+        android:id="@+id/tvDetailAwayScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:text="@string/min"
         android:textSize="50sp"
-        app:layout_constraintBottom_toBottomOf="@+id/tvAwayName"
+        app:layout_constraintBottom_toBottomOf="@+id/tvDetailAwayName"
         app:layout_constraintStart_toEndOf="@+id/textView4"
-        app:layout_constraintTop_toTopOf="@+id/ivAwayLogo" />
+        app:layout_constraintTop_toTopOf="@+id/ivDetailAwayLogo" />
 
     <ImageView
-        android:id="@+id/ivAwayLogo"
+        android:id="@+id/ivDetailAwayLogo"
         android:layout_width="75dp"
         android:layout_height="75dp"
         android:layout_marginEnd="24dp"
@@ -74,13 +74,13 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:id="@+id/tvAwayName"
+        android:id="@+id/tvDetailAwayName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/away_team"
-        app:layout_constraintEnd_toEndOf="@+id/ivAwayLogo"
-        app:layout_constraintStart_toStartOf="@+id/ivAwayLogo"
-        app:layout_constraintTop_toBottomOf="@+id/ivAwayLogo" />
+        app:layout_constraintEnd_toEndOf="@+id/ivDetailAwayLogo"
+        app:layout_constraintStart_toStartOf="@+id/ivDetailAwayLogo"
+        app:layout_constraintTop_toBottomOf="@+id/ivDetailAwayLogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

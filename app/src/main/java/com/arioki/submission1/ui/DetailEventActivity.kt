@@ -13,6 +13,14 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_event.*
 
 class DetailEventActivity : AppCompatActivity(), DetailEventView {
+    override fun finishLoadDataList(items: MutableList<DetailEventListItem>) {
+        val layoutManager = LinearLayoutManager(applicationContext)
+        val adapter = DetailEventAdapter(applicationContext, items)
+        rvDetailEvent.layoutManager = layoutManager
+        rvDetailEvent.isNestedScrollingEnabled = false
+        rvDetailEvent.adapter = adapter
+    }
+
     override fun finishLoadData(it: DetailEventItem) {
         it.logger(this)
         it.run {
@@ -75,54 +83,8 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
                     }
                 })
 
-            val layoutManager = LinearLayoutManager(applicationContext)
-
             val titles = resources.getStringArray(R.array.detailevent)
-            val items: MutableList<DetailEventListItem> = mutableListOf()
-            items.clear()
-            for (i in titles.indices) {
-                items.add(
-                    when (i) {
-                        0 -> DetailEventListItem(intHomeScore, titles[i], intAwayScore)
-                        1 -> DetailEventListItem(intHomeShots, titles[i], intAwayShots)
-                        2 -> DetailEventListItem(strAwayRedCards, titles[i], strAwayRedCards)
-                        3 -> DetailEventListItem(strHomeYellowCards, titles[i], strAwayYellowCards)
-                        4 -> DetailEventListItem(strHomeFormation, titles[i], strAwayFormation)
-                        5 -> DetailEventListItem(strHomeGoalDetails, titles[i], strAwayGoalDetails)
-                        6 -> DetailEventListItem(
-                            strHomeLineupDefense,
-                            titles[i],
-                            strAwayLineupDefense
-                        )
-                        7 -> DetailEventListItem(
-                            strHomeLineupForward,
-                            titles[i],
-                            strAwayLineupForward
-                        )
-                        8 -> DetailEventListItem(
-                            strHomeLineupGoalkeeper,
-                            titles[i],
-                            strAwayLineupGoalkeeper
-                        )
-                        9 -> DetailEventListItem(
-                            strHomeLineupMidfield,
-                            titles[i],
-                            strAwayLineupMidfield
-                        )
-                        10 -> DetailEventListItem(
-                            strHomeLineupSubstitutes,
-                            titles[i],
-                            strAwayLineupSubstitutes
-                        )
-                        else -> DetailEventListItem("-", "-", "-")
-                    }
-                )
-            }
-            val adapter = DetailEventAdapter(applicationContext, items)
-            rvDetailEvent.layoutManager = layoutManager
-            rvDetailEvent.isNestedScrollingEnabled = false
-            rvDetailEvent.adapter = adapter
-
+            presenter.getDataList(titles, this)
         }
 
     }

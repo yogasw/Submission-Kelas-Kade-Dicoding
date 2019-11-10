@@ -49,6 +49,7 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
     }
 
     private lateinit var eventPresenter: SearchEventPresenter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
@@ -67,7 +68,6 @@ class SearchEventActivity : AppCompatActivity(), SearchEventView {
             }
 
             override fun onQueryTextChange(newText: String?): Boolean {
-
                 return false
             }
 

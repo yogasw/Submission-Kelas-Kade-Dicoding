@@ -4,6 +4,7 @@ import android.graphics.Typeface
 import android.os.Bundle
 import android.util.Base64
 import android.view.Gravity
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.arioki.submission.data.FootballItem
 import org.jetbrains.anko.*
@@ -22,8 +23,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         var data: FootballItem = intent.getParcelableExtra("FootballItem")
         valName = data.name.toString()
         valDescription = data.description.toString()
@@ -66,6 +66,13 @@ class DetailActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }

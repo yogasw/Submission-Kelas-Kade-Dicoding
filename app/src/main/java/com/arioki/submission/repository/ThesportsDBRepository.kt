@@ -218,23 +218,25 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                 response: Response<SearchEventsResponse>
             ) {
                 if (response.isSuccessful) {
-                    val result = response.body()?.event?.map {
-                        with(it) {
-                            EventItem(
-                                idEvent,
-                                idHomeTeam,
-                                idAwayTeam,
-                                strEvent,
-                                dateEvent,
-                                strTime,
-                                strHomeTeam,
-                                strAwayTeam,
-                                intHomeScore,
-                                intAwayScore,
-                                strThumb
-                            )
+                    val result = response.body()?.event
+                        ?.filter { it -> it.strSport == "Soccer" }
+                        ?.map {
+                            with(it) {
+                                EventItem(
+                                    idEvent,
+                                    idHomeTeam,
+                                    idAwayTeam,
+                                    strEvent,
+                                    dateEvent,
+                                    strTime,
+                                    strHomeTeam,
+                                    strAwayTeam,
+                                    intHomeScore,
+                                    intAwayScore,
+                                    strThumb
+                                )
+                            }
                         }
-                    }
                     result?.let {
                         onSuccess(it)
                     } ?: run {

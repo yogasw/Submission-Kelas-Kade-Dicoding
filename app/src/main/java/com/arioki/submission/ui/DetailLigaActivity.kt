@@ -1,9 +1,7 @@
 package com.arioki.submission.ui
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +17,7 @@ class DetailLigaActivity : AppCompatActivity() {
     lateinit var data: FootballItem
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_detail_liga)
         data = intent.getParcelableExtra("FootballItem")
         initDetailLiga()
@@ -26,15 +25,9 @@ class DetailLigaActivity : AppCompatActivity() {
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.menu, menu)
-        return super.onCreateOptionsMenu(menu)
-    }
-
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.btnMenuSearch) {
-            startActivity(Intent(applicationContext, SearchEventActivity::class.java))
+        if (item.itemId == android.R.id.home) {
+            finish()
         }
         return super.onOptionsItemSelected(item)
     }

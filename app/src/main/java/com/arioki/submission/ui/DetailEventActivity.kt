@@ -1,6 +1,7 @@
 package com.arioki.submission.ui
 
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,6 +14,7 @@ import com.arioki.submission.ext.logger
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_event.*
+
 
 class DetailEventActivity : AppCompatActivity(), DetailEventView {
     override fun finishLoadDataList(items: MutableList<DetailEventListItem>) {
@@ -128,9 +130,18 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_event)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setDisplayShowHomeEnabled(true)
         val id = intent.getIntExtra("idEvent", 0)
         presenter = DetailEventPresenter(id)
         presenter.attachView(this)
         presenter.getData()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

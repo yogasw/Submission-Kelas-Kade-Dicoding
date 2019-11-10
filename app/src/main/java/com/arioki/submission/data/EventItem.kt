@@ -6,6 +6,8 @@ import kotlinx.android.parcel.Parcelize
 @Parcelize
 data class EventItem(
     var id: String?,
+    var idHomeTeam: String?,
+    var idAwayTeam: String?,
     var name: String?,
     var date: String?,
     var time: String?,

@@ -3,6 +3,7 @@ package com.arioki.submission.repository
 import com.arioki.submission.data.DetailEventItem
 import com.arioki.submission.data.EventItem
 import com.arioki.submission.data.LeaguesItem
+import com.arioki.submission.data.LookupTeamIteam
 import com.arioki.submission.remote.ThesportsDBApi
 import com.arioki.submission.remote.response.*
 import retrofit2.Call
@@ -62,6 +63,8 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                         with(it) {
                             EventItem(
                                 idEvent,
+                                idHomeTeam,
+                                idAwayTeam,
                                 strEvent,
                                 dateEvent,
                                 strTime,
@@ -101,6 +104,8 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                         with(it) {
                             EventItem(
                                 idEvent,
+                                idHomeTeam,
+                                idAwayTeam,
                                 strEvent,
                                 dateEvent,
                                 strTime,
@@ -217,6 +222,8 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                         with(it) {
                             EventItem(
                                 idEvent,
+                                idHomeTeam,
+                                idAwayTeam,
                                 strEvent,
                                 dateEvent,
                                 strTime,
@@ -230,6 +237,86 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                     }
                     result?.let {
                         onSuccess(it)
+                    } ?: run {
+                        onError(Throwable("Data Empty!"))
+                    }
+                } else {
+                    onError(Throwable("Something went wrong!"))
+                }
+            }
+
+        })
+    }
+
+    fun lookupTeam(id: Int, onSuccess: (LookupTeamIteam) -> Unit, onError: (Throwable) -> Unit) {
+        api.lookupTeam(id).enqueue(object : Callback<LookupTeamResponse> {
+            override fun onFailure(call: Call<LookupTeamResponse>, t: Throwable) {
+                onError(t)
+            }
+
+            override fun onResponse(
+                call: Call<LookupTeamResponse>,
+                response: Response<LookupTeamResponse>
+            ) {
+                if (response.isSuccessful) {
+                    val result = response.body()?.teams?.map {
+                        with(it) {
+                            LookupTeamIteam(
+                                idLeague,
+                                idSoccerXML,
+                                idTeam,
+                                intFormedYear,
+                                intLoved,
+                                intStadiumCapacity,
+                                strAlternate,
+                                strCountry,
+                                strDescriptionCN,
+                                strDescriptionDE,
+                                strDescriptionEN,
+                                strDescriptionES,
+                                strDescriptionFR,
+                                strDescriptionHU,
+                                strDescriptionIL,
+                                strDescriptionIT,
+                                strDescriptionJP,
+                                strDescriptionNL,
+                                strDescriptionNO,
+                                strDescriptionPL,
+                                strDescriptionPT,
+                                strDescriptionRU,
+                                strDescriptionSE,
+                                strDivision,
+                                strFacebook,
+                                strGender,
+                                strInstagram,
+                                strKeywords,
+                                strLeague,
+                                strLocked,
+                                strManager,
+                                strRSS,
+                                strSport,
+                                strStadium,
+                                strStadiumDescription,
+                                strStadiumLocation,
+                                strStadiumThumb,
+                                strTeam,
+                                strTeamBadge,
+                                strTeamBanner,
+                                strTeamFanart1,
+                                strTeamFanart2,
+                                strTeamFanart3,
+                                strTeamFanart4,
+                                strTeamJersey,
+                                strTeamLogo,
+                                strTeamShort,
+                                strTwitter,
+                                strWebsite,
+                                strYoutube
+                            )
+                        }
+                    }
+                    result?.let {
+                        onSuccess(it[0])
                     } ?: run {
                         onError(Throwable("Data Empty!"))
                     }

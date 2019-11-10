@@ -33,5 +33,8 @@ object ThesportsDBApi {
         @GET("searchevents.php")
         fun searchEvent(@Query("e") text: String): Call<SearchEventsResponse>
 
+        @GET("lookupteam.php")
+        fun lookupTeam(@Query("id") id: Int): Call<LookupTeamResponse>
+
     }
 }

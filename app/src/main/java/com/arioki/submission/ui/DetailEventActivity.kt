@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.adapter.DetailEventAdapter
 import com.arioki.submission.data.DetailEventItem
@@ -25,6 +26,9 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
     override fun finishLoadData(it: DetailEventItem) {
         it.logger(this)
         it.run {
+            val idHomeTeam = idHomeTeam?.toInt()
+            val idAwayTeam = idAwayTeam?.toInt()
+
             tvDetailHomeName.text = strHomeTeam
             tvHomeName.text = strHomeTeam
 
@@ -37,53 +41,64 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
             tvDetailNameEvent.text = strEvent
             tvDateTime.text = dateEvent
 
-            Picasso.get()
-                .load("https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png")
-                .into(ivLogoHome, object : Callback {
-                    override fun onSuccess() {
-                        hiddenShimmer()
-                    }
+            if (idHomeTeam != null) {
+                App.instances.repository.lookupTeam(idHomeTeam, {
+                    Picasso.get()
+                        .load(it.strTeamBadge)
+                        .into(ivLogoHome, object : Callback {
+                            override fun onSuccess() {
+                                hiddenShimmer()
+                            }
 
-                    override fun onError(e: Exception?) {
-                        "Error".logger(applicationContext)
-                    }
+                            override fun onError(e: Exception?) {
+                                "Error".logger(applicationContext)
+                            }
+                        })
+                    Picasso.get()
+                        .load(it.strTeamBadge)
+                        .into(ivDetailHomeLogo, object : Callback {
+                            override fun onSuccess() {
+                                hiddenShimmer()
+                            }
+
+                            override fun onError(e: Exception?) {
+                                "Error".logger(applicationContext)
+                            }
+                        })
+                }, {
+
                 })
+            }
 
-            Picasso.get()
-                .load("https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png")
-                .into(ivLogoAway, object : Callback {
-                    override fun onSuccess() {
-                        hiddenShimmer()
-                    }
+            if (idAwayTeam != null) {
+                App.instances.repository.lookupTeam(idAwayTeam, {
+                    Picasso.get()
+                        .load(it.strTeamBadge)
+                        .into(ivLogoAway, object : Callback {
+                            override fun onSuccess() {
+                                hiddenShimmer()
+                            }
 
-                    override fun onError(e: Exception?) {
-                        "Error".logger(applicationContext)
-                    }
+                            override fun onError(e: Exception?) {
+                                "Error".logger(applicationContext)
+                            }
+                        })
+
+                    Picasso.get()
+                        .load(it.strTeamBadge)
+                        .into(ivDetailAwayLogo, object : Callback {
+                            override fun onSuccess() {
+                                hiddenShimmer()
+                            }
+
+                            override fun onError(e: Exception?) {
+                                "Error".logger(applicationContext)
+                            }
+                        })
+                }, {
+
                 })
-
-            Picasso.get()
-                .load("https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png")
-                .into(ivDetailHomeLogo, object : Callback {
-                    override fun onSuccess() {
-                        hiddenShimmer()
-                    }
-
-                    override fun onError(e: Exception?) {
-                        "Error".logger(applicationContext)
-                    }
-                })
-            Picasso.get()
-                .load("https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png")
-                .into(ivDetailAwayLogo, object : Callback {
-                    override fun onSuccess() {
-                        hiddenShimmer()
-                    }
-
-                    override fun onError(e: Exception?) {
-                        "Error".logger(applicationContext)
-                    }
-                })
-
+            }
             val titles = resources.getStringArray(R.array.detailevent)
             presenter.getDataList(titles, this)
         }

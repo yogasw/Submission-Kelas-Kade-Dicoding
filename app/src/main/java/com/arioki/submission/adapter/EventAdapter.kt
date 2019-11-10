@@ -8,8 +8,10 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.data.EventItem
+import com.facebook.shimmer.ShimmerFrameLayout
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.league_items.view.*
@@ -45,33 +47,68 @@ class EventAdapter(
         private val ivHomeLogo: ImageView = view.ivDetailHomeLogo
         private val ivAwayLogo: ImageView = view.ivDetailAwayLogo
 
+        private val shimmerHome: ShimmerFrameLayout = view.shimmerHome
+        private val shimmerAway: ShimmerFrameLayout = view.shimmerAway
+
         fun bindItem(items: EventItem, listener: (EventItem) -> Unit) {
             tvHomeName.text = items.homeTeam
             tvAwayName.text = items.awayTeam
             tvHomesScore.text = items.homeTeamScore ?: "-"
             tvAwayScore.text = items.awayTeamScore ?: "-"
-            Picasso.get()
-                .load("https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png")
-                .into(ivHomeLogo, object : Callback {
-                    override fun onSuccess() {
-                    }
+            val idHomeTeam = items.idHomeTeam?.toInt()
+            val idAwayTeam = items.idAwayTeam?.toInt()
 
-                    override fun onError(e: Exception?) {
-                        Log.d("LOGAPP", "error")
+            ivHomeLogo.setImageResource(android.R.color.transparent)
+            ivAwayLogo.setImageResource(android.R.color.transparent)
+            shimmerHome.startShimmerAnimation()
+            shimmerAway.startShimmerAnimation()
+            shimmerHome.visibility = View.VISIBLE
+            shimmerAway.visibility = View.VISIBLE
+
+            if (idHomeTeam != null) {
+                App.instances.repository.lookupTeam(idHomeTeam,
+                    {
+                        it.run {
+
+                            Picasso.get()
+                                .load(strTeamBadge)
+                                .into(ivHomeLogo, object : Callback {
+                                    override fun onSuccess() {
+                                        shimmerHome.visibility = View.GONE
+                                    }
+
+                                    override fun onError(e: Exception?) {
+                                        shimmerHome.visibility = View.GONE
+                                        Log.d("LOGAPP", "error")
+                                    }
+                                })
+                        }
+                    }, {
+                        it.printStackTrace()
+                    })
+            }
+
+            if (idAwayTeam != null) {
+                App.instances.repository.lookupTeam(idAwayTeam, {
+                    it.run {
+                        Picasso.get()
+                            .load(strTeamBadge)
+                            .into(ivAwayLogo, object : Callback {
+                                override fun onSuccess() {
+                                    shimmerAway.visibility = View.GONE
+                                }
+
+                                override fun onError(e: Exception?) {
+                                    shimmerAway.visibility = View.GONE
+                                    Log.d("LOGAPP", "error")
+                                }
+                            })
+
                     }
+                }, {
+
                 })
-
-            Picasso.get()
-                .load("https://www.thesportsdb.com/images/media/team/badge/a1af2i1557005128.png")
-                .into(ivAwayLogo, object : Callback {
-                    override fun onSuccess() {
-
-                    }
-
-                    override fun onError(e: Exception?) {
-                        Log.d("LOGAPP", "error")
-                    }
-                })
+            }
             itemView.setOnClickListener {
                 listener(items)
             }

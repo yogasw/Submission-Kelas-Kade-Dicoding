@@ -2,7 +2,10 @@ package com.arioki.submission1.ui
 
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.arioki.submission1.App
 import com.arioki.submission1.R
@@ -20,9 +23,23 @@ class DetailLigaActivity : AppCompatActivity() {
         data = intent.getParcelableExtra("FootballItem")
         initDetailLiga()
         initTab()
+
     }
 
-    public fun getId(): Int {
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val id = item.itemId
+        if (id == R.id.btnMenuSearch) {
+            Toast.makeText(applicationContext, "setting", Toast.LENGTH_LONG).show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    fun getId(): Int {
         val id = data.id.toString()
         return id.toInt()
     }

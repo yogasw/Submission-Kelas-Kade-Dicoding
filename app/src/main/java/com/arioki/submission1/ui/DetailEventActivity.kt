@@ -1,6 +1,7 @@
 package com.arioki.submission1.ui
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arioki.submission1.R
@@ -90,11 +91,21 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
     }
 
     override fun showShimmer() {
-
+        shimmerLogoAwayDetail.startShimmerAnimation()
+        shimmerLogoHomeyDetail.startShimmerAnimation()
+        shimmerDateTime.startShimmerAnimation()
+        shimmerDetailNameEvent.startShimmerAnimation()
+        shimmeDetailEvent.startShimmerAnimation()
+        shimmerConstraintLayout.startShimmerAnimation()
     }
 
     override fun hiddenShimmer() {
-
+        shimmerLogoAwayDetail.visibility = View.GONE
+        shimmerLogoHomeyDetail.visibility = View.GONE
+        shimmerDateTime.visibility = View.GONE
+        shimmerDetailNameEvent.visibility = View.GONE
+        shimmeDetailEvent.visibility = View.GONE
+        shimmerConstraintLayout.visibility = View.GONE
     }
 
     private lateinit var presenter: DetailEventPresenter

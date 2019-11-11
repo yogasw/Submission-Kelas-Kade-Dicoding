@@ -25,7 +25,7 @@ class PastEventFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context)
         val activity = activity as DetailLigaActivity
         val id = activity.getId()
-        App.instances.repository.pastEvent(id, {
+        App.instances.repository.pastEvent(id, { it ->
             hiddenSimmer()
             adapter = EventAdapter(context, it) {
                 val intent = Intent(context, DetailEventActivity::class.java)

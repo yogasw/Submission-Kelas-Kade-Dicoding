@@ -9,9 +9,9 @@ import org.jetbrains.anko.*
 
 class FootbalItemUI : AnkoComponent<ViewGroup> {
     companion object {
-        val tvName = 1
-        val ivImage = 2
-        val vlItem = 3
+        const val tvName = 1
+        const val ivImage = 2
+        const val vlItem = 3
     }
 
     override fun createView(ui: AnkoContext<ViewGroup>) = with(ui) {

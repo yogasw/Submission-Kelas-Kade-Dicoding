@@ -4,7 +4,6 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.arioki.submission.data.FootballItem
@@ -17,13 +16,13 @@ class FootbalAdapter(
     private val items: List<FootballItem>,
     private val listener: (FootballItem) -> Unit
 ) :
-    RecyclerView.Adapter<FootbalAdapter.FootbalViewHolder>() {
+    RecyclerView.Adapter<FootbalAdapter.FootballViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
-    ): FootbalViewHolder {
-        return FootbalViewHolder(
+    ): FootballViewHolder {
+        return FootballViewHolder(
             FootbalItemUI().createView(
                 AnkoContext.create(
                     parent.context,
@@ -37,15 +36,13 @@ class FootbalAdapter(
         return items.size
     }
 
-    override fun onBindViewHolder(holder: FootbalViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: FootballViewHolder, position: Int) {
         holder.bindItem(items[position],listener)
     }
 
-    class FootbalViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+    class FootballViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         private val tvName: TextView = itemView.findViewById(FootbalItemUI.tvName)
         private val image: ImageView = itemView.findViewById(FootbalItemUI.ivImage)
-        val vlItem: LinearLayout = itemView.findViewById(FootbalItemUI.vlItem)
-        val clickListener: ((View) -> Unit)? = null
         fun bindItem(items: FootballItem, listener: (FootballItem) -> Unit) {
             tvName.text = items.name
             items.badge.let { Picasso.get().load(it).into(image) }

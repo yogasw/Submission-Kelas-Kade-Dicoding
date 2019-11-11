@@ -4,13 +4,13 @@ import com.arioki.submission.data.DetailEventItem
 import com.arioki.submission.data.EventItem
 import com.arioki.submission.data.LeaguesItem
 import com.arioki.submission.data.LookupTeamIteam
-import com.arioki.submission.remote.ThesportsDBApi
+import com.arioki.submission.remote.TheSportsDBApi
 import com.arioki.submission.remote.response.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
+class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
 
     fun leaguesLookup(id: Int, onSuccess: (LeaguesItem) -> Unit, onError: (Throwable) -> Unit) {
         api.leaguesLookupResponse(id).enqueue(object : Callback<LeaguesLookupResponse> {
@@ -23,7 +23,7 @@ class ThesportsDBRepository(val api: ThesportsDBApi.Api) {
                 response: Response<LeaguesLookupResponse>
             ) {
                 if (response.isSuccessful) {
-                    var result = response.body()?.leagues?.map {
+                    val result = response.body()?.leagues?.map {
                         with(it) {
                             LeaguesItem(
                                 dateFirstEvent,

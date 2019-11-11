@@ -10,7 +10,7 @@ import com.arioki.submission.R
 import com.arioki.submission.data.DetailEventListItem
 import kotlinx.android.synthetic.main.detail_event_items.view.*
 
-class DetailEventAdapter(var context: Context?, var items: List<DetailEventListItem>) :
+class DetailEventAdapter(var context: Context?, private var items: List<DetailEventListItem>) :
 
     RecyclerView.Adapter<DetailEventAdapter.ViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

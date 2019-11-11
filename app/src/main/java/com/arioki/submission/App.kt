@@ -1,12 +1,12 @@
 package com.arioki.submission
 
 import android.app.Application
-import com.arioki.submission.remote.ThesportsDBApi
-import com.arioki.submission.repository.ThesportsDBRepository
+import com.arioki.submission.remote.TheSportsDBApi
+import com.arioki.submission.repository.TheSportsDBRepository
 
 class App : Application() {
-    val repository: ThesportsDBRepository by lazy {
-        ThesportsDBRepository(ThesportsDBApi.create())
+    val repository: TheSportsDBRepository by lazy {
+        TheSportsDBRepository(TheSportsDBApi.create())
     }
 
     override fun onCreate() {

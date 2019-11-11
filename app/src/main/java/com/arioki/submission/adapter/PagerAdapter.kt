@@ -7,7 +7,7 @@ import com.arioki.submission.ui.NextMatchFragment
 import com.arioki.submission.ui.PastEventFragment
 
 class PagerAdapter(fm: FragmentManager) :
-    FragmentPagerAdapter(fm, FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
+    FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
     private val pages = listOf(
         NextMatchFragment(),
         PastEventFragment()

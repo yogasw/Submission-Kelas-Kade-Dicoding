@@ -21,11 +21,11 @@ class MainActivity : AppCompatActivity() {
 
     class MainUi : AnkoComponent<MainActivity>, AnkoLogger {
         override fun createView(ui: AnkoContext<MainActivity>) = with(ui) {
-            var items: MutableList<FootballItem> = mutableListOf()
-            var name = resources.getStringArray(R.array.name)
-            var id = resources.getStringArray(R.array.id)
-            var description = resources.getStringArray(R.array.description)
-            var badge = resources.obtainTypedArray(R.array.badge)
+            val items: MutableList<FootballItem> = mutableListOf()
+            val name = resources.getStringArray(R.array.name)
+            val id = resources.getStringArray(R.array.id)
+            val description = resources.getStringArray(R.array.description)
+            val badge = resources.obtainTypedArray(R.array.badge)
             items.clear()
             for (i in name.indices) {
                 items.add(
@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
             badge.recycle()
             verticalLayout {
 
-                var club_list = recyclerView {
+                recyclerView {
                     lparams(
                         width = matchParent,
                         height = matchParent
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                         info("Log Data")
 
                         //Penerapan Intent
-                        var data: FootballItem = FootballItem(
+                        val data: FootballItem = FootballItem(
                             it.id,
                             it.name,
                             it.badge,

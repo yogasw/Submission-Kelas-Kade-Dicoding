@@ -10,21 +10,21 @@ import com.arioki.submission.data.FootballItem
 import org.jetbrains.anko.*
 
 class DetailActivity : AppCompatActivity() {
-    var valName = ""
-    var valDescription = ""
-    var valBadge: Int = 0
-
+    private var valName = ""
+    private var valDescription = ""
+    private var valBadge: Int = 0
+    private lateinit var data: FootballItem
     companion object {
-        val bg = 1
-        val badge = 2
-        val description = 3
-        val name = 4
+        const val bg = 1
+        const val badge = 2
+        const val description = 3
+        const val name = 4
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        var data: FootballItem = intent.getParcelableExtra("FootballItem")
+        data = intent.getParcelableExtra("FootballItem")
         valName = data.name.toString()
         valDescription = data.description.toString()
         valBadge = data.badge

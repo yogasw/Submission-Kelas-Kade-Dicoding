@@ -21,15 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:background="@android:color/holo_blue_light"
-            tools:context=".ui.DetailLigaActivity">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="16dp"></LinearLayout>
+            android:background="@android:color/holo_blue_light">
 
             <ImageView
                 android:id="@+id/ivLogo"
@@ -37,6 +29,7 @@
                 android:layout_height="100dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:contentDescription="@string/logo_team"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TableLayout
@@ -49,7 +42,6 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/tableRow"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -58,7 +50,6 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingBottom="10dp"
-                        android:text="English Premier League"
                         android:textColor="@android:color/white"
                         android:textSize="18sp"
                         android:textStyle="bold"
@@ -76,20 +67,19 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date First Event"
+                        android:text="@string/date_first_event"
                         android:textColor="@android:color/white" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" : "
+                        android:text="@string/colon"
                         android:textColor="@android:color/white" />
 
                     <TextView
                         android:id="@+id/iv_date_first_event"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="2000"
                         android:textColor="@android:color/white" />
                 </TableRow>
 
@@ -100,21 +90,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gender"
+                        android:text="@string/gender"
                         android:textColor="@android:color/white" />
 
                     <TextView
-                        android:id="@+id/textView14"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" : "
+                        android:text="@string/colon"
                         android:textColor="@android:color/white" />
 
                     <TextView
                         android:id="@+id/iv_gender"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Male"
+                        android:text="@string/male"
                         android:textColor="@android:color/white" />
                 </TableRow>
 
@@ -125,21 +114,20 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Country"
+                        android:text="@string/country"
                         android:textColor="@android:color/white" />
 
                     <TextView
-                        android:id="@+id/textView15"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text=" : "
+                        android:text="@string/colon"
                         android:textColor="@android:color/white" />
 
                     <TextView
                         android:id="@+id/iv_country"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Indonesia"
+                        android:text="@string/sample_country"
                         android:textColor="@android:color/white" />
                 </TableRow>
             </TableLayout>

@@ -26,10 +26,9 @@ class NextMatchFragment : Fragment() {
         val layoutManager = LinearLayoutManager(context)
         val activity = activity as DetailLigaActivity
         val id = activity.getId()
-        App.instances.repository.nextEvent(id, {
+        App.instances.repository.nextEvent(id, { it ->
             hiddenSimmer()
             adapter = EventAdapter(context, it) {
-                it
                 val intent = Intent(context, DetailEventActivity::class.java)
                 intent.putExtra("idEvent", it.id?.toInt())
                 startActivity(intent)

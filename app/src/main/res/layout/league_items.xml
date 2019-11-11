@@ -97,7 +97,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray" />
+            android:background="@android:color/darker_gray"
+            android:contentDescription="@string/background_shimmer" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 
     <com.facebook.shimmer.ShimmerFrameLayout
@@ -111,6 +112,7 @@
         app:layout_constraintTop_toTopOf="@+id/ivDetailAwayLogo">
 
         <ImageView
+            android:contentDescription="@string/background_shimmer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@android:color/darker_gray" />

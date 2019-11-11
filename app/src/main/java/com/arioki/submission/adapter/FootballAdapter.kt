@@ -7,23 +7,23 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.arioki.submission.data.FootballItem
-import com.arioki.submission.ui.FootbalItemUI
+import com.arioki.submission.ui.FootballItemUI
 import com.squareup.picasso.Picasso
 import org.jetbrains.anko.AnkoContext
 
-class FootbalAdapter(
+class FootballAdapter(
     val context: Context,
     private val items: List<FootballItem>,
     private val listener: (FootballItem) -> Unit
 ) :
-    RecyclerView.Adapter<FootbalAdapter.FootballViewHolder>() {
+    RecyclerView.Adapter<FootballAdapter.FootballViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
     ): FootballViewHolder {
         return FootballViewHolder(
-            FootbalItemUI().createView(
+            FootballItemUI().createView(
                 AnkoContext.create(
                     parent.context,
                     parent
@@ -41,8 +41,8 @@ class FootbalAdapter(
     }
 
     class FootballViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        private val tvName: TextView = itemView.findViewById(FootbalItemUI.tvName)
-        private val image: ImageView = itemView.findViewById(FootbalItemUI.ivImage)
+        private val tvName: TextView = itemView.findViewById(FootballItemUI.tvName)
+        private val image: ImageView = itemView.findViewById(FootballItemUI.ivImage)
         fun bindItem(items: FootballItem, listener: (FootballItem) -> Unit) {
             tvName.text = items.name
             items.badge.let { Picasso.get().load(it).into(image) }

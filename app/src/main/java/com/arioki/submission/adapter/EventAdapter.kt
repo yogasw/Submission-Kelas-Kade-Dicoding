@@ -53,8 +53,19 @@ class EventAdapter(
         fun bindItem(items: EventItem, listener: (EventItem) -> Unit) {
             tvHomeName.text = items.homeTeam
             tvAwayName.text = items.awayTeam
-            tvHomesScore.text = items.homeTeamScore ?: "-"
-            tvAwayScore.text = items.awayTeamScore ?: "-"
+
+            if (items.homeTeamScore == "null" || items.homeTeamScore == null || items.homeTeamScore == "") {
+                tvHomesScore.text = "-"
+            } else {
+                tvHomesScore.text = items.homeTeamScore
+            }
+
+            if (items.awayTeamScore == "null" || items.awayTeamScore == null || items.awayTeamScore == "") {
+                tvAwayScore.text = "-"
+            } else {
+                tvAwayScore.text = items.homeTeamScore
+            }
+
             val idHomeTeam = items.idHomeTeam?.toInt()
             val idAwayTeam = items.idAwayTeam?.toInt()
 
@@ -79,7 +90,6 @@ class EventAdapter(
 
                                     override fun onError(e: Exception?) {
                                         shimmerHome.visibility = View.GONE
-                                        Log.d("LOGAPP", "error")
                                     }
                                 })
                         }

@@ -43,5 +43,7 @@ data class DetailEventItem(
     val strLeague: String?,
     val strSeason: String?,
     val strSport: String?,
-    val strTime: String?
+    val strTime: String?,
+    val strLogoHome: String?,
+    val strLogoAway: String?
 ) : Parcelable

@@ -32,9 +32,16 @@ class DetailEventAdapter(var context: Context?, private var items: List<DetailEv
         private val title: TextView = view.tvTitle
         private val away: TextView = view.tvAway
         fun bindItem(detailEventListItem: DetailEventListItem) {
-            home.text = detailEventListItem.home
-            title.text = detailEventListItem.title
-            away.text = detailEventListItem.away
+            if (detailEventListItem.home != "null") {
+                home.text = detailEventListItem.home
+            }
+            if (detailEventListItem.home != "null") {
+                title.text = detailEventListItem.title
+            }
+            if (detailEventListItem.home != "null") {
+                away.text = detailEventListItem.away
+            }
+
         }
     }
 

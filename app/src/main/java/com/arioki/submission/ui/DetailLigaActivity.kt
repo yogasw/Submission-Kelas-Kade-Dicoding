@@ -1,7 +1,6 @@
 package com.arioki.submission.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +8,7 @@ import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.adapter.PagerAdapter
 import com.arioki.submission.data.FootballItem
+import com.arioki.submission.ext.logger
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_liga.*
@@ -38,13 +38,17 @@ class DetailLigaActivity : AppCompatActivity() {
     }
 
     private fun initTab() {
+        val pages = listOf(
+            NextMatchFragment(),
+            PastEventFragment()
+        )
         viewPagerDetailLiga.adapter =
-            PagerAdapter(supportFragmentManager)
+            PagerAdapter(supportFragmentManager, pages)
         tabsDetailLiga.setupWithViewPager(viewPagerDetailLiga)
     }
 
     private fun initDetailLiga() {
-        shimerInfoLeague.startShimmerAnimation()
+        shimmerInfoLeague.startShimmerAnimation()
         App.instances.repository.leaguesLookup(getId(), {
             it.run {
                 iv_str_league.text = strLeague
@@ -55,12 +59,12 @@ class DetailLigaActivity : AppCompatActivity() {
                     .load(strBadge)
                     .into(ivLogo, object : Callback {
                         override fun onSuccess() {
-                            shimerInfoLeague.visibility = View.GONE
+                            shimmerInfoLeague.visibility = View.GONE
                             llInfoLeague.visibility = View.VISIBLE
                         }
 
                         override fun onError(e: Exception?) {
-                            Log.d("LOGAPP", "error")
+                            "Error".logger(applicationContext)
                         }
                     })
             }

@@ -3,7 +3,7 @@ package com.arioki.submission.repository
 import com.arioki.submission.data.DetailEventItem
 import com.arioki.submission.data.EventItem
 import com.arioki.submission.data.LeaguesItem
-import com.arioki.submission.data.LookupTeamIteam
+import com.arioki.submission.data.LookupTeamItem
 import com.arioki.submission.remote.TheSportsDBApi
 import com.arioki.submission.remote.response.*
 import retrofit2.Call
@@ -186,7 +186,9 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                                 strLeague,
                                 strSeason,
                                 strSport,
-                                strTime
+                                strTime,
+                                "",
+                                ""
                             )
                         }
                     }
@@ -250,7 +252,7 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
         })
     }
 
-    fun lookupTeam(id: Int, onSuccess: (LookupTeamIteam) -> Unit, onError: (Throwable) -> Unit) {
+    fun lookupTeam(id: Int, onSuccess: (LookupTeamItem) -> Unit, onError: (Throwable) -> Unit) {
         api.lookupTeam(id).enqueue(object : Callback<LookupTeamResponse> {
             override fun onFailure(call: Call<LookupTeamResponse>, t: Throwable) {
                 onError(t)
@@ -263,7 +265,7 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                 if (response.isSuccessful) {
                     val result = response.body()?.teams?.map {
                         with(it) {
-                            LookupTeamIteam(
+                            LookupTeamItem(
                                 idLeague,
                                 idSoccerXML,
                                 idTeam,

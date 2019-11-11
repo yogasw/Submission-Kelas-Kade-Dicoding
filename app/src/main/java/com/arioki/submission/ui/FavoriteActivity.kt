@@ -1,6 +1,7 @@
 package com.arioki.submission.ui
 
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.arioki.submission.R
 import com.arioki.submission.adapter.PagerAdapter
@@ -12,11 +13,23 @@ class FavoriteActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_favorite)
-        //initTab()
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        initTab()
     }
 
     private fun initTab() {
-        viewPagerFavorite.adapter = PagerAdapter(supportFragmentManager)
+        val pages = listOf(
+            FavoriteNextEventFragment(),
+            FavoritePastEventFragment()
+        )
+        viewPagerFavorite.adapter = PagerAdapter(supportFragmentManager, pages)
         tabFavorite.setupWithViewPager(viewPagerFavorite)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

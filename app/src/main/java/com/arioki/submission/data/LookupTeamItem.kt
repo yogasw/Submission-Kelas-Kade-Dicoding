@@ -5,7 +5,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 
-data class LookupTeamIteam(
+data class LookupTeamItem(
 
     val idLeague: String?,
 

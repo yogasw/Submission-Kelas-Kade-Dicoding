@@ -7,7 +7,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.arioki.submission.R
-import com.arioki.submission.adapter.FootbalAdapter
+import com.arioki.submission.adapter.FootballAdapter
 import com.arioki.submission.data.FootballItem
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                         height = matchParent
                     )
                     layoutManager = LinearLayoutManager(ctx)
-                    adapter = FootbalAdapter(ctx, items) {
+                    adapter = FootballAdapter(ctx, items) {
                         //Penerapan dialog
                         toast(it.name.toString())
 
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                         info("Log Data")
 
                         //Penerapan Intent
-                        val data: FootballItem = FootballItem(
+                        val data = FootballItem(
                             it.id,
                             it.name,
                             it.badge,

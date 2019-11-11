@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.FavoriteActivity"></activity>
+        <activity android:name=".ui.FavoriteActivity" />
         <activity
             android:name=".ui.SearchEventActivity"
             android:theme="@style/SearchTheme" />

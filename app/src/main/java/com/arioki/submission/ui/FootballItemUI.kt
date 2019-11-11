@@ -7,7 +7,7 @@ import android.widget.LinearLayout
 import com.arioki.submission.R
 import org.jetbrains.anko.*
 
-class FootbalItemUI : AnkoComponent<ViewGroup> {
+class FootballItemUI : AnkoComponent<ViewGroup> {
     companion object {
         const val tvName = 1
         const val ivImage = 2

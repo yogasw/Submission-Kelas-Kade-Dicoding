@@ -7,8 +7,11 @@
     android:padding="16dp">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -21,9 +24,9 @@
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
+                android:contentDescription="@string/logo_away_team"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDateTime"
-                android:contentDescription="@string/logo_away_team"
                 tools:src="@tools:sample/avatars" />
 
             <ImageView
@@ -33,9 +36,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginTop="24dp"
+                android:contentDescription="@string/logo_home_team"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvDateTime"
-                android:contentDescription="@string/logo_home_team"
                 tools:src="@tools:sample/avatars" />
 
             <TextView
@@ -183,23 +186,23 @@
                     android:id="@+id/tvHomeName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginLeft="8dp"
                     android:layout_weight="1"
-                    android:layout_marginStart="8dp"
                     android:baselineAligned="false" />
 
                 <TextView
                     android:id="@+id/tvAwayName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_weight="1"
-                    android:layout_marginEnd="8dp"
                     android:gravity="end" />
             </LinearLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmeDetailEvent"
+                android:id="@+id/shimmerDetailEvent"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 app:duration="700"
@@ -225,10 +228,10 @@
                 app:layout_constraintTop_toTopOf="@+id/tvDateTime">
 
                 <ImageView
-                    android:contentDescription="@string/background_shimmer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray" />
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/background_shimmer" />
             </com.facebook.shimmer.ShimmerFrameLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -242,10 +245,10 @@
                 app:layout_constraintTop_toTopOf="@+id/tvDetailNameEvent">
 
                 <ImageView
-                    android:contentDescription="@string/background_shimmer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray" />
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/background_shimmer" />
             </com.facebook.shimmer.ShimmerFrameLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -259,10 +262,10 @@
                 app:layout_constraintTop_toTopOf="@+id/ivLogoHome">
 
                 <ImageView
-                    android:contentDescription="@string/background_shimmer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray" />
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/background_shimmer" />
             </com.facebook.shimmer.ShimmerFrameLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -276,10 +279,10 @@
                 app:layout_constraintTop_toTopOf="@+id/ivLogoAway">
 
                 <ImageView
-                    android:contentDescription="@string/background_shimmer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray" />
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/background_shimmer" />
             </com.facebook.shimmer.ShimmerFrameLayout>
 
             <com.facebook.shimmer.ShimmerFrameLayout
@@ -293,10 +296,10 @@
                 app:layout_constraintTop_toTopOf="@+id/constraintLayout">
 
                 <ImageView
-                    android:contentDescription="@string/background_shimmer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@android:color/darker_gray" />
+                    android:background="@android:color/darker_gray"
+                    android:contentDescription="@string/background_shimmer" />
             </com.facebook.shimmer.ShimmerFrameLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

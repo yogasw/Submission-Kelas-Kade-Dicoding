@@ -21,8 +21,9 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
     private lateinit var strLogoHome: String
     private lateinit var strLogoAway: String
     private lateinit var menuButton: Menu
-
+    private var favoriteMenu = 0
     override fun showAddFavoriteButton() {
+        favoriteMenu = 1
         if (::menuButton.isInitialized) {
             menuButton.findItem(R.id.removeFavorites).isVisible = false
             menuButton.findItem(R.id.addFavorite).isVisible = true
@@ -30,6 +31,7 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
     }
 
     override fun showRemoveFavoriteButton() {
+        favoriteMenu = 2
         if (::menuButton.isInitialized) {
             menuButton.findItem(R.id.removeFavorites).isVisible = true
             menuButton.findItem(R.id.addFavorite).isVisible = false
@@ -105,17 +107,39 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
             val idHomeTeam = idHomeTeam?.toInt()
             val idAwayTeam = idAwayTeam?.toInt()
 
-            tvDetailHomeName.text = strHomeTeam
-            tvHomeName.text = strHomeTeam
+            if (strHomeTeam != "null") {
+                tvDetailHomeName.text = strHomeTeam
+            }
 
-            tvDetailAwayName.text = strAwayTeam
-            tvAwayName.text = strAwayTeam
+            if (strHomeTeam != "null") {
+                tvHomeName.text = strHomeTeam
+            }
 
-            tvDetailHomeScore.text = intHomeScore
-            tvDetailAwayScore.text = intAwayScore
+            if (strAwayTeam != "null") {
+                tvDetailAwayName.text = strAwayTeam
+            }
 
-            tvDetailNameEvent.text = strEvent
-            tvDateTime.text = dateEvent
+            if (strAwayTeam != "null") {
+                tvAwayName.text = strAwayTeam
+            }
+
+            if (intHomeScore != "null") {
+                tvDetailHomeScore.text = intHomeScore
+            }
+
+            if (intAwayScore != "null") {
+                tvDetailAwayScore.text = intAwayScore
+            }
+
+            if (strEvent != "null") {
+                tvDetailNameEvent.text = strEvent
+            }
+
+            if (dateEvent != "null") {
+                tvDateTime.text = dateEvent
+            } else {
+                tvDateTime.text = ""
+            }
 
             if (idHomeTeam != null) {
                 presenter.getUrlLogo(idHomeTeam, "home")
@@ -127,7 +151,6 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
             val titles = resources.getStringArray(R.array.detailevent)
             presenter.getDataList(titles, this)
         }
-
     }
 
     override fun showShimmer() {
@@ -135,7 +158,7 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
         shimmerLogoHomeyDetail.startShimmerAnimation()
         shimmerDateTime.startShimmerAnimation()
         shimmerDetailNameEvent.startShimmerAnimation()
-        shimmeDetailEvent.startShimmerAnimation()
+        shimmerDetailEvent.startShimmerAnimation()
         shimmerConstraintLayout.startShimmerAnimation()
     }
 
@@ -144,7 +167,7 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
         shimmerLogoHomeyDetail.visibility = View.GONE
         shimmerDateTime.visibility = View.GONE
         shimmerDetailNameEvent.visibility = View.GONE
-        shimmeDetailEvent.visibility = View.GONE
+        shimmerDetailEvent.visibility = View.GONE
         shimmerConstraintLayout.visibility = View.GONE
     }
 
@@ -169,15 +192,32 @@ class DetailEventActivity : AppCompatActivity(), DetailEventView {
                     presenter.insertFavorite(data, strLogoHome, strLogoAway)
                 }
             }
+            R.id.removeFavorites -> {
+                if (::data.isInitialized && ::strLogoHome.isInitialized && ::strLogoAway.isInitialized) {
+                    presenter.removeFavorite(data)
+                }
+            }
         }
         return super.onOptionsItemSelected(item)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.favorite, menu)
         if (menu != null) {
             this.menuButton = menu
+
         }
+        menuInflater.inflate(R.menu.favorite, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (favoriteMenu == 1) {
+            menu?.findItem(R.id.removeFavorites)?.isVisible = false
+            menu?.findItem(R.id.addFavorite)?.isVisible = true
+        } else {
+            menu?.findItem(R.id.removeFavorites)?.isVisible = true
+            menu?.findItem(R.id.addFavorite)?.isVisible = false
+        }
+        return super.onPrepareOptionsMenu(menu)
     }
 }

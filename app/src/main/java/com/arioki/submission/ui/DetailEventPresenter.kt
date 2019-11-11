@@ -5,7 +5,7 @@ import com.arioki.submission.App
 import com.arioki.submission.data.DetailEventItem
 import com.arioki.submission.data.DetailEventListItem
 import com.arioki.submission.db.Favorite
-import org.jetbrains.anko.db.insert
+import org.jetbrains.anko.db.*
 
 class DetailEventPresenter(var id: Int) {
     var view: DetailEventView? = null
@@ -14,14 +14,88 @@ class DetailEventPresenter(var id: Int) {
     }
 
     fun getData() {
-        view?.showAddFavoriteButton()
-        view?.showShimmer()
-        App.instances.repository.detailEvent(id, {
+        val showShimmer = view?.showShimmer()
+        val data = getDataFromDatabase()
+        if (data.isNotEmpty()) {
+            parsingData(data)
+            view?.showRemoveFavoriteButton()
+        } else {
+            view?.showAddFavoriteButton()
+            getDataFromApi()
+        }
+    }
+
+    private fun parsingData(data: List<Map<String, Any?>>) {
+        val result = data.map { columns ->
+            DetailEventItem(
+                columns["dateEvent"].toString(),
+                columns["dateEventLocal"].toString(),
+                columns["idAwayTeam"].toString(),
+                columns["idEvent"].toString(),
+                columns["idHomeTeam"].toString(),
+                columns["intAwayScore"].toString(),
+                columns["intAwayShots"].toString(),
+                columns["intHomeScore"].toString(),
+                columns["intHomeShots"].toString(),
+                columns["intRound"].toString(),
+                columns["intSpectators"].toString(),
+                columns["strAwayFormation"].toString(),
+                columns["strAwayGoalDetails"].toString(),
+                columns["strAwayLineupDefense"].toString(),
+                columns["strAwayLineupForward"].toString(),
+                columns["strAwayLineupGoalkeeper"].toString(),
+                columns["strAwayLineupMidfield"].toString(),
+                columns["strAwayLineupSubstitutes"].toString(),
+                columns["strAwayRedCards"].toString(),
+                columns["strAwayTeam"].toString(),
+                columns["strAwayYellowCards"].toString(),
+                columns["strDate"].toString(),
+                columns["strEvent"].toString(),
+                columns["strEventAlternate"].toString(),
+                columns["strFilename"].toString(),
+                columns["strHomeFormation"].toString(),
+                columns["strHomeGoalDetails"].toString(),
+                columns["strHomeLineupDefense"].toString(),
+                columns["strHomeLineupForward"].toString(),
+                columns["strHomeLineupGoalkeeper"].toString(),
+                columns["strHomeLineupMidfield"].toString(),
+                columns["strHomeLineupSubstitutes"].toString(),
+                columns["strHomeRedCards"].toString(),
+                columns["strHomeTeam"].toString(),
+                columns["strHomeYellowCards"].toString(),
+                columns["strLeague"].toString(),
+                columns["strSeason"].toString(),
+                columns["strSport"].toString(),
+                columns["strTime"].toString(),
+                columns["strLogoHome"].toString(),
+                columns["strLogoAway"].toString()
+            )
+        }
+        view?.finishLoadData(result[0])
+    }
+
+    private fun getDataFromApi() {
+        App.instances.repository.detailEvent(this.id, {
             view?.hiddenShimmer()
             view?.finishLoadData(it)
         }, {
             view?.hiddenShimmer()
         })
+    }
+
+    private fun getDataFromDatabase(): List<Map<String, Any?>> {
+        return App.instances.database.use {
+            select(Favorite.tbName)
+                .whereArgs("idEvent == ${this@DetailEventPresenter.id}")
+                .exec {
+                    parseList(object : MapRowParser<Map<String, Any?>> {
+                        override fun parseRow(columns: Map<String, Any?>): Map<String, Any?> {
+                            return columns
+                        }
+                    }
+                    )
+                }
+        }
     }
 
     fun getDataList(
@@ -134,6 +208,23 @@ class DetailEventPresenter(var id: Int) {
                 }
                 view?.showRemoveFavoriteButton()
             } catch (e: SQLiteConstraintException) {
+                e.printStackTrace()
+            }
+        }
+    }
+
+    fun removeFavorite(data: DetailEventItem) {
+        data.run {
+            try {
+                App.instances.database.use {
+                    delete(
+                        Favorite.tbName, "(${Favorite.fidEvent} = {id})",
+                        "id" to data.idEvent.toString()
+                    )
+                }
+                view?.showAddFavoriteButton()
+            } catch (e: SQLiteConstraintException) {
+                e.printStackTrace()
             }
         }
     }

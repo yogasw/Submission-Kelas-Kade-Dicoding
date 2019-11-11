@@ -39,10 +39,12 @@ data class Favorite(
     val strLeague: String?,
     val strSeason: String?,
     val strSport: String?,
-    val strTime: String?
+    val strTime: String?,
+    val srLogoHome: String?,
+    val strLogoAway: String?
 ) {
     companion object {
-        const val tbName: String = "tableFavorit"
+        const val tbName: String = "tableFavorite"
         const val fdateEventLocal: String = "dateEventLocal"
         const val fidAwayTeam: String = "idAwayTeam"
         const val fidEvent: String = "idEvent"

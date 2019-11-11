@@ -75,7 +75,4 @@
     <string name="country">Country</string>
     <string name="sample_country">Sample Country</string>
     <string name="data_empty">Data Empty !!</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

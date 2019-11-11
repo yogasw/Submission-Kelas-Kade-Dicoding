@@ -1,10 +1,13 @@
 package com.arioki.submission
 
 import android.app.Application
+import com.arioki.submission.db.SportDBHelper
 import com.arioki.submission.remote.TheSportsDBApi
 import com.arioki.submission.repository.TheSportsDBRepository
 
 class App : Application() {
+    val database: SportDBHelper
+        get() = SportDBHelper.getInstance(applicationContext)
     val repository: TheSportsDBRepository by lazy {
         TheSportsDBRepository(TheSportsDBApi.create())
     }

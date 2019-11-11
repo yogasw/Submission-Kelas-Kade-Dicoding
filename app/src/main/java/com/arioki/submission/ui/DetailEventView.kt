@@ -8,5 +8,7 @@ interface DetailEventView {
     fun hiddenShimmer()
     fun finishLoadData(it: DetailEventItem)
     fun finishLoadDataList(items: MutableList<DetailEventListItem>)
-
+    fun getUrlLogoDone(strTeamBadge: String, team: String)
+    fun showAddFavoriteButton()
+    fun showRemoveFavoriteButton()
 }

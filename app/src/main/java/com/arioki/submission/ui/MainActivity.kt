@@ -16,7 +16,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MainUi().setContentView(this)
-
     }
 
     class MainUi : AnkoComponent<MainActivity>, AnkoLogger {
@@ -76,10 +75,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        if (id == R.id.btnMenuSearch) {
-            val intent = Intent(applicationContext, SearchEventActivity::class.java)
-            startActivity(intent)
+        when (item.itemId) {
+            R.id.btnMenuSearch -> startActivity(
+                Intent(
+                    applicationContext,
+                    SearchEventActivity::class.java
+                )
+            )
+            R.id.showFavorite -> startActivity(
+                Intent(
+                    applicationContext,
+                    FavoriteActivity::class.java
+                )
+            )
         }
         return super.onOptionsItemSelected(item)
     }

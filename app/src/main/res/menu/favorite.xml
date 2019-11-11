@@ -1,13 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/btnMenuSearch"
-        android:icon="@drawable/ic_search_black_24dp"
+        android:id="@+id/addFavorite"
+        android:icon="@drawable/ic_add_to_favorites"
         android:title=""
         app:showAsAction="always" />
     <item
-        android:id="@+id/showFavorite"
-        android:icon="@drawable/ic_favorites"
+        android:id="@+id/removeFavorites"
+        android:icon="@drawable/ic_added_to_favorites"
         android:title=""
+        android:visible="false"
         app:showAsAction="always" />
 </menu>

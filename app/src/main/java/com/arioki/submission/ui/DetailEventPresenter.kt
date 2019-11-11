@@ -1,8 +1,11 @@
 package com.arioki.submission.ui
 
+import android.database.sqlite.SQLiteConstraintException
 import com.arioki.submission.App
 import com.arioki.submission.data.DetailEventItem
 import com.arioki.submission.data.DetailEventListItem
+import com.arioki.submission.db.Favorite
+import org.jetbrains.anko.db.insert
 
 class DetailEventPresenter(var id: Int) {
     var view: DetailEventView? = null
@@ -11,6 +14,7 @@ class DetailEventPresenter(var id: Int) {
     }
 
     fun getData() {
+        view?.showAddFavoriteButton()
         view?.showShimmer()
         App.instances.repository.detailEvent(id, {
             view?.hiddenShimmer()
@@ -66,6 +70,72 @@ class DetailEventPresenter(var id: Int) {
             }
         }
         view?.finishLoadDataList(items)
+    }
+
+    fun getUrlLogo(idHomeTeam: Int, team: String) {
+        App.instances.repository.lookupTeam(idHomeTeam, {
+            val url: String = it.strTeamBadge.toString()
+            view?.getUrlLogoDone(url, team)
+        }, {
+        })
+    }
+
+    fun insertFavorite(
+        data: DetailEventItem,
+        strLogoHome: String,
+        strLogoAway: String
+    ) {
+        data.run {
+            try {
+                App.instances.database.use {
+                    insert(
+                        Favorite.tbName,
+                        Favorite.fdateEventLocal to dateEventLocal,
+                        Favorite.fidAwayTeam to idAwayTeam,
+                        Favorite.fidEvent to idEvent,
+                        Favorite.fidHomeTeam to idHomeTeam,
+                        Favorite.fintAwayScore to intAwayScore,
+                        Favorite.fintAwayShots to intAwayShots,
+                        Favorite.fintHomeScore to intHomeScore,
+                        Favorite.fintHomeShots to intHomeShots,
+                        Favorite.fintRound to intRound,
+                        Favorite.fintSpectators to intSpectators,
+                        Favorite.fstrAwayFormation to strAwayFormation,
+                        Favorite.fstrAwayGoalDetails to strAwayGoalDetails,
+                        Favorite.fstrAwayLineupDefense to strAwayLineupDefense,
+                        Favorite.fstrAwayLineupForward to strAwayLineupForward,
+                        Favorite.fstrAwayLineupGoalkeeper to strAwayLineupGoalkeeper,
+                        Favorite.fstrAwayLineupMidfield to strAwayLineupMidfield,
+                        Favorite.fstrAwayLineupSubstitutes to strAwayLineupSubstitutes,
+                        Favorite.fstrAwayRedCards to strAwayRedCards,
+                        Favorite.fstrAwayTeam to strAwayTeam,
+                        Favorite.fstrAwayYellowCards to strAwayYellowCards,
+                        Favorite.fstrDate to strDate,
+                        Favorite.fstrEvent to strEvent,
+                        Favorite.fstrEventAlternate to strEventAlternate,
+                        Favorite.fstrFilename to strFilename,
+                        Favorite.fstrHomeFormation to strHomeFormation,
+                        Favorite.fstrHomeGoalDetails to strHomeGoalDetails,
+                        Favorite.fstrHomeLineupDefense to strHomeLineupDefense,
+                        Favorite.fstrHomeLineupForward to strHomeLineupForward,
+                        Favorite.fstrHomeLineupGoalkeeper to strHomeLineupGoalkeeper,
+                        Favorite.fstrHomeLineupMidfield to strHomeLineupMidfield,
+                        Favorite.fstrHomeLineupSubstitutes to strHomeLineupSubstitutes,
+                        Favorite.fstrHomeRedCards to strHomeRedCards,
+                        Favorite.fstrHomeTeam to strHomeTeam,
+                        Favorite.fstrHomeYellowCards to strHomeYellowCards,
+                        Favorite.fstrLeague to strLeague,
+                        Favorite.fstrSeason to strSeason,
+                        Favorite.fstrSport to strSport,
+                        Favorite.fstrTime to strTime,
+                        Favorite.fstrLogoHome to strLogoHome,
+                        Favorite.fstrLogoAway to strLogoAway
+                    )
+                }
+                view?.showRemoveFavoriteButton()
+            } catch (e: SQLiteConstraintException) {
+            }
+        }
     }
 
 

@@ -1,5 +1,4 @@
-package com.arioki.submission.ui
-
+package com.arioki.submission.ui.favoriteNextEvent
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,9 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arioki.submission.R
 import com.arioki.submission.adapter.EventAdapter
 import com.arioki.submission.data.EventItem
+import com.arioki.submission.ui.detailEvent.DetailEventActivity
 import kotlinx.android.synthetic.main.fragment_favorite_next_event.*
 
-class FavoriteNextEventFragment : Fragment(), FavoriteNextEventView {
+class FavoriteNextEventFragment : Fragment(),
+    FavoriteNextEventView {
 
     private lateinit var presenter: FavoriteNextEventPresenter
     private lateinit var layoutManager: LinearLayoutManager

@@ -1,4 +1,4 @@
-package com.arioki.submission.ui
+package com.arioki.submission.ui.favoritePastEvent
 
 import com.arioki.submission.data.EventItem
 

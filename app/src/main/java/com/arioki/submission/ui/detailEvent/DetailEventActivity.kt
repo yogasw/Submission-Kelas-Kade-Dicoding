@@ -1,4 +1,4 @@
-package com.arioki.submission.ui
+package com.arioki.submission.ui.detailEvent
 
 import android.os.Bundle
 import android.view.Menu
@@ -16,7 +16,8 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_event.*
 
 
-class DetailEventActivity : AppCompatActivity(), DetailEventView {
+class DetailEventActivity : AppCompatActivity(),
+    DetailEventView {
     lateinit var data: DetailEventItem
     private lateinit var strLogoHome: String
     private lateinit var strLogoAway: String

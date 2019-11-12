@@ -1,4 +1,4 @@
-package com.arioki.submission.ui
+package com.arioki.submission.ui.searchEvent
 
 import com.arioki.submission.App
 

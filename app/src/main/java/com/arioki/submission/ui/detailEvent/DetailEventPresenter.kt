@@ -1,4 +1,4 @@
-package com.arioki.submission.ui
+package com.arioki.submission.ui.detailEvent
 
 import android.database.sqlite.SQLiteConstraintException
 import com.arioki.submission.App

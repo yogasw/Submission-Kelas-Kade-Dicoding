@@ -1,4 +1,4 @@
-package com.arioki.submission.ui
+package com.arioki.submission.ui.favoriteNextEvent
 
 import android.annotation.SuppressLint
 import android.database.sqlite.SQLiteConstraintException
@@ -12,10 +12,10 @@ import org.jetbrains.anko.db.select
 import java.text.SimpleDateFormat
 import java.util.*
 
-class FavoritePastEventPresenter {
-    var view: FavoritePastEventFragment? = null
-    fun attachView(view: FavoritePastEventFragment) {
-        this.view = view
+class FavoriteNextEventPresenter {
+    var view: FavoriteNextEventView? = null
+    fun attachView(activity: FavoriteNextEventFragment) {
+        view = activity
     }
 
     @SuppressLint("SimpleDateFormat")
@@ -23,7 +23,7 @@ class FavoritePastEventPresenter {
         try {
             App.instances.database.use {
                 val data = select(Favorite.tbName)
-                    .whereArgs("strDate < '${SimpleDateFormat("dd/M/yyyy").format(Date())}'")
+                    .whereArgs("strDate >= '${SimpleDateFormat("dd/M/yyyy").format(Date())}'")
                     .exec {
                         parseList(object : MapRowParser<Map<String, DetailEventItem?>> {
                             override fun parseRow(columns: Map<String, Any?>): Map<String, DetailEventItem?> {
@@ -55,5 +55,6 @@ class FavoritePastEventPresenter {
             e.printStackTrace()
         }
     }
+
 
 }

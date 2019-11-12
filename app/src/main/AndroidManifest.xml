@@ -15,9 +15,9 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".ui.FavoriteActivity" />
         <activity
-            android:name=".ui.SearchEventActivity"
+            android:name=".ui.searchEvent.SearchEventActivity"
             android:theme="@style/SearchTheme" />
-        <activity android:name=".ui.DetailEventActivity" />
+        <activity android:name=".ui.detailEvent.DetailEventActivity" />
         <activity android:name=".ui.DetailLigaActivity" />
         <activity android:name=".ui.DetailActivity" />
         <activity android:name=".ui.MainActivity">

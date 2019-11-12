@@ -1,4 +1,4 @@
-package com.arioki.submission.ui
+package com.arioki.submission.ui.detailEvent
 
 import com.arioki.submission.data.DetailEventItem
 import com.arioki.submission.data.DetailEventListItem

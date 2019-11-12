@@ -1,5 +1,4 @@
-package com.arioki.submission.ui
-
+package com.arioki.submission.ui.favoritePastEvent
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,12 +10,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arioki.submission.R
 import com.arioki.submission.adapter.EventAdapter
 import com.arioki.submission.data.EventItem
+import com.arioki.submission.ui.detailEvent.DetailEventActivity
 import kotlinx.android.synthetic.main.fragment_favorite_past_event.*
 
-/**
- * A simple [Fragment] subclass.
- */
-class FavoritePastEventFragment : Fragment(), FavoritePastEventView {
+class FavoritePastEventFragment : Fragment(),
+    FavoritePastEventView {
     override fun getDataDone(result: List<EventItem>) {
         rvFavoritePastEvent.layoutManager = LinearLayoutManager(context)
         rvFavoritePastEvent.adapter = EventAdapter(context, result) {

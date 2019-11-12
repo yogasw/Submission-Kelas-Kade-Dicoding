@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arioki.submission.R
 import com.arioki.submission.adapter.FootballAdapter
 import com.arioki.submission.data.FootballItem
+import com.arioki.submission.ui.searchEvent.SearchEventActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView
 

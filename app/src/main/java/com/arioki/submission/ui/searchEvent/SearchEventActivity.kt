@@ -1,4 +1,4 @@
-package com.arioki.submission.ui
+package com.arioki.submission.ui.searchEvent
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,10 +9,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arioki.submission.R
 import com.arioki.submission.adapter.EventAdapter
 import com.arioki.submission.data.EventItem
+import com.arioki.submission.ui.detailEvent.DetailEventActivity
 import kotlinx.android.synthetic.main.activity_search.*
 
 
-class SearchEventActivity : AppCompatActivity(), SearchEventView {
+class SearchEventActivity : AppCompatActivity(),
+    SearchEventView {
     override fun dataEmpty() {
         shimmerSearch1.visibility = View.GONE
         shimmerSearch2.visibility = View.GONE

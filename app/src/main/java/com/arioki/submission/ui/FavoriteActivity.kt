@@ -5,6 +5,8 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.arioki.submission.R
 import com.arioki.submission.adapter.PagerAdapter
+import com.arioki.submission.ui.favoriteNextEvent.FavoriteNextEventFragment
+import com.arioki.submission.ui.favoritePastEvent.FavoritePastEventFragment
 import kotlinx.android.synthetic.main.activity_favorite.*
 
 

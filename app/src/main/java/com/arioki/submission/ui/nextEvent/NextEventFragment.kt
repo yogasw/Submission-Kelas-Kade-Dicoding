@@ -22,7 +22,6 @@ class NextEventFragment : Fragment(), NextEventView {
     private var id: Int? = 0
     private lateinit var layoutManager: LinearLayoutManager
     override fun getDataDone(it: List<EventItem>) {
-        hiddenSimmer()
         adapter = EventAdapter(context, it) {
             val intent = Intent(context, DetailEventActivity::class.java)
             intent.putExtra("idEvent", it.id?.toInt())

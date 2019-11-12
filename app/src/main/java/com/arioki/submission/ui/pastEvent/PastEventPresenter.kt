@@ -11,6 +11,7 @@ class PastEventPresenter(var id: Int) {
 
     fun getData() {
         App.instances.repository.pastEvent(id, {
+            view?.hiddenSimmer()
             view?.getDataDone(it)
         }, {
             view?.hiddenSimmer()

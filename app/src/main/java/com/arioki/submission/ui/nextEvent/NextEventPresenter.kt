@@ -11,6 +11,7 @@ class NextEventPresenter(private var id: Int) {
 
     fun getData() {
         App.instances.repository.nextEvent(id, {
+            view?.hiddenSimmer()
             view?.getDataDone(it)
         }, {
             view?.hiddenSimmer()

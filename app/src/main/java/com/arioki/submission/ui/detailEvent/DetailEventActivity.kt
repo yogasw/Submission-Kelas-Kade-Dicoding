@@ -1,3 +1,12 @@
+/*
+ * *
+ *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Copyright (c) 2019 . All rights reserved.
+ *   Last modified 11/12/19 7:21 AM
+ *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+ *
+ */
+
 package com.arioki.submission.ui.detailEvent
 
 import android.os.Bundle
@@ -50,7 +59,7 @@ class DetailEventActivity : AppCompatActivity(),
                     }
 
                     override fun onError(e: Exception?) {
-                        "Error".logger(applicationContext)
+                        "Error".logger()
                     }
                 })
             Picasso.get()
@@ -61,7 +70,7 @@ class DetailEventActivity : AppCompatActivity(),
                     }
 
                     override fun onError(e: Exception?) {
-                        "Error".logger(applicationContext)
+                        "Error".logger()
                     }
                 })
         } else if (team == "away") {
@@ -74,7 +83,7 @@ class DetailEventActivity : AppCompatActivity(),
                     }
 
                     override fun onError(e: Exception?) {
-                        "Error".logger(applicationContext)
+                        "Error".logger()
                     }
                 })
 
@@ -86,7 +95,7 @@ class DetailEventActivity : AppCompatActivity(),
                     }
 
                     override fun onError(e: Exception?) {
-                        "Error".logger(applicationContext)
+                        "Error".logger()
                     }
                 })
         }
@@ -97,12 +106,12 @@ class DetailEventActivity : AppCompatActivity(),
         val layoutManager = LinearLayoutManager(applicationContext)
         val adapter = DetailEventAdapter(applicationContext, items)
         rvDetailEvent.layoutManager = layoutManager
-        rvDetailEvent.isNestedScrollingEnabled = false
+        //rvDetailEvent.isNestedScrollingEnabled = false
         rvDetailEvent.adapter = adapter
     }
 
     override fun finishLoadData(it: DetailEventItem) {
-        it.logger(this)
+        it.logger()
         data = it
         it.run {
             val idHomeTeam = idHomeTeam?.toInt()
@@ -155,12 +164,12 @@ class DetailEventActivity : AppCompatActivity(),
     }
 
     override fun showShimmer() {
-        shimmerLogoAwayDetail.startShimmerAnimation()
-        shimmerLogoHomeyDetail.startShimmerAnimation()
-        shimmerDateTime.startShimmerAnimation()
-        shimmerDetailNameEvent.startShimmerAnimation()
-        shimmerDetailEvent.startShimmerAnimation()
-        shimmerConstraintLayout.startShimmerAnimation()
+        shimmerLogoAwayDetail.startShimmer()
+        shimmerLogoHomeyDetail.startShimmer()
+        shimmerDateTime.startShimmer()
+        shimmerDetailNameEvent.startShimmer()
+        shimmerDetailEvent.startShimmer()
+        shimmerConstraintLayout.startShimmer()
     }
 
     override fun hiddenShimmer() {

@@ -1,3 +1,12 @@
+<!--
+  ~ /**
+  ~   Created by Yoga Setiawan on 11/12/19 8:56 AM
+  ~   Copyright (c) 2019 . All rights reserved.
+  ~   Last modified 11/12/19 7:15 AM
+  ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+  ~  */
+  -->
+
 <resources>
     <string name="app_name">Football Sport</string>
     <string-array name="name">
@@ -75,4 +84,5 @@
     <string name="country">Country</string>
     <string name="sample_country">Sample Country</string>
     <string name="data_empty">Data Empty !!</string>
+    <string name="sample">Sample Text</string>
 </resources>

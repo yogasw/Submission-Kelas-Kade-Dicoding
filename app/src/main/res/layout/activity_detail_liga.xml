@@ -1,4 +1,12 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~   Created by Yoga Setiawan on 11/12/19 8:56 AM
+  ~   Copyright (c) 2019 . All rights reserved.
+  ~   Last modified 11/12/19 8:02 AM
+  ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+  ~  */
+  -->
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,7 +21,6 @@
         android:id="@+id/llInfoLeague"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/darker_gray"
         android:orientation="horizontal"
         android:visibility="gone">
 
@@ -137,9 +144,7 @@
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerInfoLeague"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:duration="700">
-
+        android:layout_height="wrap_content">
         <include layout="@layout/shimmer_info_league" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 
@@ -151,8 +156,6 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabsDetailLiga"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray"
-            app:tabGravity="center" />
+            android:layout_height="wrap_content" />
     </androidx.viewpager.widget.ViewPager>
 </LinearLayout>

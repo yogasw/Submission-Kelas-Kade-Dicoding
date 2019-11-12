@@ -1,3 +1,12 @@
+/*
+ * *
+ *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Copyright (c) 2019 . All rights reserved.
+ *   Last modified 11/12/19 7:15 AM
+ *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+ *
+ */
+
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -59,6 +68,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
 
     // Facebook shimmer effect dependency
-    implementation 'com.facebook.shimmer:shimmer:0.1.0@aar'
+    implementation 'com.facebook.shimmer:shimmer:0.4.0'
     implementation 'com.google.android.material:material:1.2.0-alpha01'
 }

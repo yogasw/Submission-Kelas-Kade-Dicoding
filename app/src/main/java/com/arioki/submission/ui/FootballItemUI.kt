@@ -1,3 +1,12 @@
+/*
+ * *
+ *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Copyright (c) 2019 . All rights reserved.
+ *   Last modified 11/12/19 7:15 AM
+ *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+ *
+ */
+
 package com.arioki.submission.ui
 
 import android.graphics.Color
@@ -33,7 +42,7 @@ class FootballItemUI : AnkoComponent<ViewGroup> {
             )
             textView {
                 id = tvName
-                text = "test"
+                text = R.string.sample.toString()
                 padding = dip(5)
             }.lparams(
                 width = wrapContent, height = wrapContent

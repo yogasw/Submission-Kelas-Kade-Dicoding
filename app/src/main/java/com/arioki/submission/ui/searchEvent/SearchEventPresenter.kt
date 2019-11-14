@@ -9,24 +9,21 @@
 
 package com.arioki.submission.ui.searchEvent
 
-import com.arioki.submission.App
+import com.arioki.submission.repository.TheSportsDBRepository
 
-class SearchEventPresenter {
-    var view: SearchEventView? = null
-    fun attachView(view: SearchEventActivity) {
-        this.view = view
-    }
+class SearchEventPresenter(
+    val view: SearchEventView,
+    private val repository: TheSportsDBRepository
+) {
 
-    fun searchData(text: String) {
-        view?.showShimmer()
-        App.instances.repository.searchEvent(text, {
-            view?.hiddenSimmer()
-            view?.finishLoadData(it)
+    fun searchData() {
+        view.showShimmer()
+        repository.searchEvent(view.getTextSearch(), {
+            view.hiddenSimmer()
+            view.finishLoadData(it)
         }, {
-            view?.dataEmpty()
+            view.dataEmpty()
         })
 
     }
-
-
 }

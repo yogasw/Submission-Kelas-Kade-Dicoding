@@ -23,7 +23,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "BASE_URL", '"https://www.thesportsdb.com/api/v1/json/1/"')
     }
     androidExtensions {
@@ -39,6 +39,10 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    testOptions {
+        unitTests.includeAndroidResources = true
+    }
+
 }
 
 dependencies {
@@ -70,4 +74,13 @@ dependencies {
     // Facebook shimmer effect dependency
     implementation 'com.facebook.shimmer:shimmer:0.4.0'
     implementation 'com.google.android.material:material:1.2.0-alpha01'
+
+    testImplementation 'junit:junit:4.12'
+    testImplementation 'androidx.test:core:1.2.0'
+    testImplementation 'org.mockito:mockito-core:3.0.0'
+    testImplementation 'org.mockito:mockito-inline:3.0.0'
+
+
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

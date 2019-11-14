@@ -15,6 +15,7 @@ import android.view.View
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.adapter.EventAdapter
 import com.arioki.submission.data.EventItem
@@ -24,6 +25,8 @@ import kotlinx.android.synthetic.main.activity_search.*
 
 class SearchEventActivity : AppCompatActivity(),
     SearchEventView {
+    override fun getTextSearch(): String = textSearch
+
     override fun dataEmpty() {
         shimmerSearch1.visibility = View.GONE
         shimmerSearch2.visibility = View.GONE
@@ -59,14 +62,16 @@ class SearchEventActivity : AppCompatActivity(),
         icEmpty.visibility = View.GONE
     }
 
-    private lateinit var eventPresenter: SearchEventPresenter
-
+    private var eventPresenter: SearchEventPresenter? = null
+    private var textSearch: String = ""
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
         initToolbar()
-        eventPresenter = SearchEventPresenter()
-        eventPresenter.attachView(this)
+    }
+
+    init {
+        eventPresenter = SearchEventPresenter(this, App.instances.repository)
     }
 
 
@@ -74,11 +79,12 @@ class SearchEventActivity : AppCompatActivity(),
         setSupportActionBar(toolbar)
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                eventPresenter.searchData(query.replace(" ", "_"))
+                eventPresenter?.searchData()
                 return false
             }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
+            override fun onQueryTextChange(newText: String): Boolean {
+                textSearch = newText
                 return false
             }
 

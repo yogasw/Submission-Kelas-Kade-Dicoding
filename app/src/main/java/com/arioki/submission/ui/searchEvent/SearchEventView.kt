@@ -12,6 +12,7 @@ package com.arioki.submission.ui.searchEvent
 import com.arioki.submission.data.EventItem
 
 interface SearchEventView {
+    fun getTextSearch(): String
     fun hiddenSimmer()
     fun finishLoadData(it: List<EventItem>)
     fun showShimmer()

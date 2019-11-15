@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/15/19 7:37 PM
+ *   Created by Yoga Setiawan on 11/15/19 9:03 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/15/19 5:15 PM
+ *   Last modified 11/15/19 8:33 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -21,10 +21,10 @@ import retrofit2.Response
 
 class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
 
-    fun leaguesLookup(id: Int, onSuccess: (LeaguesItem) -> Unit, onError: (Throwable) -> Unit) {
+    fun leaguesLookup(id: Int, callback: DetailLigaRepositoryCallback) {
         api.leaguesLookupResponse(id).enqueue(object : Callback<LeaguesLookupResponse> {
             override fun onFailure(call: Call<LeaguesLookupResponse>, t: Throwable) {
-                onError(t)
+                callback.onError()
             }
 
             override fun onResponse(
@@ -45,12 +45,12 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                         }
                     }
                     result?.let {
-                        onSuccess(it[0])
+                        callback.onSuccess(it[0])
                     } ?: run {
-                        onError(Throwable("Data Empty!"))
+                        callback.onError()
                     }
                 } else {
-                    onError(Throwable("Something went wrong!"))
+                    callback.onError()
                 }
             }
 
@@ -252,10 +252,10 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
         })
     }
 
-    fun lookupTeam(id: Int, onSuccess: (LookupTeamItem) -> Unit, onError: (Throwable) -> Unit) {
+    fun lookupTeam(id: Int, callback: LookupTeamRepositoryCallback) {
         api.lookupTeam(id).enqueue(object : Callback<LookupTeamResponse> {
             override fun onFailure(call: Call<LookupTeamResponse>, t: Throwable) {
-                onError(t)
+                callback.onError()
             }
 
             override fun onResponse(
@@ -320,16 +320,15 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                         }
                     }
                     result?.let {
-                        onSuccess(it[0])
+                        callback.onSuccess(it[0])
                     } ?: run {
-                        onError(Throwable("Data Empty!"))
+                        callback.onError()
                     }
                 } else {
-                    onError(Throwable("Something went wrong!"))
+                    callback.onError()
                 }
             }
 
         })
     }
-
 }

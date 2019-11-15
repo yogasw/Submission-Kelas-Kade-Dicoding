@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/15/19 9:03 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:15 AM
+ *   Last modified 11/15/19 8:42 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -20,6 +20,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.data.EventItem
+import com.arioki.submission.data.LookupTeamItem
+import com.arioki.submission.repository.LookupTeamRepositoryCallback
 import com.facebook.shimmer.ShimmerFrameLayout
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
@@ -87,46 +89,54 @@ class EventAdapter(
 
             if (idHomeTeam != null) {
                 App.instances.repository.lookupTeam(idHomeTeam,
-                    {
-                        it.run {
+                    object : LookupTeamRepositoryCallback {
+                        override fun onError() {}
 
-                            Picasso.get()
-                                .load(strTeamBadge)
-                                .into(ivHomeLogo, object : Callback {
-                                    override fun onSuccess() {
-                                        shimmerHome.visibility = View.GONE
-                                    }
+                        override fun onSuccess(lookupTeamItem: LookupTeamItem) {
+                            lookupTeamItem.run {
 
-                                    override fun onError(e: Exception?) {
-                                        shimmerHome.visibility = View.GONE
-                                    }
-                                })
+                                Picasso.get()
+                                    .load(strTeamBadge)
+                                    .into(ivHomeLogo, object : Callback {
+                                        override fun onSuccess() {
+                                            shimmerHome.visibility = View.GONE
+                                        }
+
+                                        override fun onError(e: Exception?) {
+                                            shimmerHome.visibility = View.GONE
+                                        }
+                                    })
+                            }
                         }
-                    }, {
-                        it.printStackTrace()
+
                     })
+
             }
 
             if (idAwayTeam != null) {
-                App.instances.repository.lookupTeam(idAwayTeam, {
-                    it.run {
-                        Picasso.get()
-                            .load(strTeamBadge)
-                            .into(ivAwayLogo, object : Callback {
-                                override fun onSuccess() {
-                                    shimmerAway.visibility = View.GONE
-                                }
+                App.instances.repository.lookupTeam(idAwayTeam,
+                    object : LookupTeamRepositoryCallback {
+                        override fun onError() {}
 
-                                override fun onError(e: Exception?) {
-                                    shimmerAway.visibility = View.GONE
-                                    Log.d("LOGAPP", "error")
-                                }
-                            })
+                        override fun onSuccess(lookupTeamItem: LookupTeamItem) {
+                            lookupTeamItem.run {
+                                Picasso.get()
+                                    .load(strTeamBadge)
+                                    .into(ivAwayLogo, object : Callback {
+                                        override fun onSuccess() {
+                                            shimmerAway.visibility = View.GONE
+                                        }
 
-                    }
-                }, {
+                                        override fun onError(e: Exception?) {
+                                            shimmerAway.visibility = View.GONE
+                                            Log.d("LOGAPP", "error")
+                                        }
+                                    })
 
-                })
+                            }
+                        }
+
+                    })
             }
             itemView.setOnClickListener {
                 listener(items)

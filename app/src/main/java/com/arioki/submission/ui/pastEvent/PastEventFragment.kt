@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/15/19 7:37 PM
+ *   Created by Yoga Setiawan on 11/15/19 9:03 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/15/19 5:13 PM
+ *   Last modified 11/15/19 8:51 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -20,8 +20,8 @@ import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.adapter.EventAdapter
 import com.arioki.submission.data.EventItem
-import com.arioki.submission.ui.DetailLigaActivity
 import com.arioki.submission.ui.detailEvent.DetailEventActivity
+import com.arioki.submission.ui.detailLiga.DetailLigaActivity
 import kotlinx.android.synthetic.main.fragment_past_event.*
 
 class PastEventFragment : Fragment(), PastEventView {

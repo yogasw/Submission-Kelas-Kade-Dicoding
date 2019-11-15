@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/15/19 9:03 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:21 AM
+ *   Last modified 11/15/19 8:35 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -12,9 +12,11 @@ package com.arioki.submission.ui.detailEvent
 import android.database.sqlite.SQLiteConstraintException
 import com.arioki.submission.data.DetailEventItem
 import com.arioki.submission.data.DetailEventListItem
+import com.arioki.submission.data.LookupTeamItem
 import com.arioki.submission.db.Favorite
 import com.arioki.submission.db.SportDBHelper
 import com.arioki.submission.repository.DetailEventCallback
+import com.arioki.submission.repository.LookupTeamRepositoryCallback
 import com.arioki.submission.repository.TheSportsDBRepository
 import org.jetbrains.anko.db.*
 
@@ -25,7 +27,7 @@ class DetailEventPresenter(
     private var database: SportDBHelper
 ) {
     fun getData() {
-        val showShimmer = view.showShimmer()
+        //val showShimmer = view.showShimmer()
         val data = getDataFromDatabase()
         if (data.isNotEmpty()) {
             parsingData(data)
@@ -163,10 +165,14 @@ class DetailEventPresenter(
     }
 
     fun getUrlLogo(idHomeTeam: Int, team: String) {
-        repository.lookupTeam(idHomeTeam, {
-            val url: String = it.strTeamBadge.toString()
-            view.getUrlLogoDone(url, team)
-        }, {
+        repository.lookupTeam(idHomeTeam, object : LookupTeamRepositoryCallback {
+            override fun onError() {
+            }
+
+            override fun onSuccess(lookupTeamItem: LookupTeamItem) {
+                val url: String = lookupTeamItem.strTeamBadge.toString()
+                view.getUrlLogoDone(url, team)
+            }
         })
     }
 

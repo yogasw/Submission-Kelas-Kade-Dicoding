@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/15/19 9:03 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:19 AM
+ *   Last modified 11/15/19 7:45 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arioki.submission.R
 import com.arioki.submission.adapter.FootballAdapter
 import com.arioki.submission.data.FootballItem
+import com.arioki.submission.ui.detailLiga.DetailLigaActivity
 import com.arioki.submission.ui.searchEvent.SearchEventActivity
 import org.jetbrains.anko.*
 import org.jetbrains.anko.recyclerview.v7.recyclerView

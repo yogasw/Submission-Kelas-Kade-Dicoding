@@ -216,12 +216,11 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
 
     fun searchEvent(
         text: String,
-        onSuccess: (List<EventItem>) -> Unit,
-        onError: (Throwable) -> Unit
+        callback: TheSportsDBRepositoryCallback
     ) {
         api.searchEvent(text).enqueue(object : Callback<SearchEventsResponse> {
             override fun onFailure(call: Call<SearchEventsResponse>, t: Throwable) {
-                onError(t)
+                callback.onError()
             }
 
             override fun onResponse(
@@ -249,12 +248,12 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                             }
                         }
                     result?.let {
-                        onSuccess(it)
+                        callback.onSuccess(it)
                     } ?: run {
-                        onError(Throwable("Data Empty!"))
+                        callback.onError()
                     }
                 } else {
-                    onError(Throwable("Something went wrong!"))
+                    callback.onError()
                 }
             }
 

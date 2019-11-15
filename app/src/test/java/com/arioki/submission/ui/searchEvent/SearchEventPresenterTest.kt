@@ -9,25 +9,30 @@
 
 package com.arioki.submission.ui.searchEvent
 
+import com.arioki.submission.data.EventItem
 import com.arioki.submission.repository.TheSportsDBRepository
-import kotlinx.coroutines.runBlocking
+import com.arioki.submission.repository.TheSportsDBRepositoryCallback
+import com.nhaarman.mockito_kotlin.argumentCaptor
+import com.nhaarman.mockito_kotlin.eq
+import com.nhaarman.mockito_kotlin.verify
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
-import org.mockito.Mockito.verify
 import org.mockito.MockitoAnnotations
 import org.mockito.junit.MockitoJUnitRunner
 
 @RunWith(MockitoJUnitRunner::class)
 
 class SearchEventPresenterTest {
-    lateinit var presenter: SearchEventPresenter
+    private lateinit var presenter: SearchEventPresenter
     @Mock
     lateinit var view: SearchEventView
     @Mock
     lateinit var repository: TheSportsDBRepository
+    @Mock
+    private var eventItem: List<EventItem> = mutableListOf()
 
     @Before
     fun setUp() {
@@ -36,13 +41,27 @@ class SearchEventPresenterTest {
     }
 
     @Test
-    fun searchData() {
-        val dummytextSearch = "madrid"
-
-        runBlocking {
-            `when`(view.getTextSearch()).thenReturn(dummytextSearch)
-            verify(view).hiddenSimmer()
+    fun searchEventSuccess() {
+        val text = "Real Madrid"
+        `when`(view.getTextSearch()).thenReturn(text)
+        presenter.searchData()
+        argumentCaptor<TheSportsDBRepositoryCallback>().apply {
+            verify(repository).searchEvent(eq(text), capture())
+            firstValue.onSuccess(eventItem)
         }
+        verify(view).finishLoadData(eventItem)
+        verify(view).hiddenSimmer()
     }
 
+    @Test
+    fun searchEventFailedOrEmpty() {
+        val text = ""
+        `when`(view.getTextSearch()).thenReturn(text)
+        presenter.searchData()
+        argumentCaptor<TheSportsDBRepositoryCallback>().apply {
+            verify(repository).searchEvent(eq(text), capture())
+            firstValue.onError()
+        }
+        verify(view).dataEmpty()
+    }
 }

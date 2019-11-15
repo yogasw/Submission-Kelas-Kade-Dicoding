@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/15/19 5:02 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:33 AM
+ *   Last modified 11/15/19 5:02 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.adapter.EventAdapter
 import com.arioki.submission.data.EventItem
@@ -60,8 +61,7 @@ class NextEventFragment : Fragment(), NextEventView {
         val activity = activity as DetailLigaActivity
         id = activity.getId()
 
-        presenter = NextEventPresenter(id!!)
-        presenter.attachView(this)
+        presenter = NextEventPresenter(this, id!!, App.instances.repository)
         presenter.getData()
     }
 

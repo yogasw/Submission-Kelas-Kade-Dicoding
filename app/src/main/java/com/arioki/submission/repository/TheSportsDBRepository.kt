@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/15/19 5:02 PM
+ *   Created by Yoga Setiawan on 11/15/19 7:37 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/15/19 5:02 PM
+ *   Last modified 11/15/19 5:15 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -97,10 +97,10 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
         })
     }
 
-    fun pastEvent(id: Int, onSuccess: (List<EventItem>) -> Unit, onError: (Throwable) -> Unit) {
+    fun pastEvent(id: Int, callback: TheSportsDBRepositoryCallback) {
         api.leaguesPastEvent(id).enqueue(object : Callback<PastEventResponse> {
             override fun onFailure(call: Call<PastEventResponse>, t: Throwable) {
-                onError(t)
+                callback.onError()
             }
 
             override fun onResponse(
@@ -126,12 +126,12 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                         }
                     }
                     result?.let {
-                        onSuccess(it)
+                        callback.onSuccess(it)
                     } ?: run {
-                        onError(Throwable("Data Empty!"))
+                        callback.onError()
                     }
                 } else {
-                    onError(Throwable("Something went wrong!"))
+                    callback.onError()
                 }
             }
 

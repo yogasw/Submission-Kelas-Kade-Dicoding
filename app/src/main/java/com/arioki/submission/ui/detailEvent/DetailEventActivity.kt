@@ -15,6 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.adapter.DetailEventAdapter
 import com.arioki.submission.data.DetailEventItem
@@ -189,8 +190,7 @@ class DetailEventActivity : AppCompatActivity(),
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         val id = intent.getIntExtra("idEvent", 0)
-        presenter = DetailEventPresenter(id)
-        presenter.attachView(this)
+        presenter = DetailEventPresenter(this, id, App.instances.repository, App.instances.database)
         presenter.getData()
     }
 

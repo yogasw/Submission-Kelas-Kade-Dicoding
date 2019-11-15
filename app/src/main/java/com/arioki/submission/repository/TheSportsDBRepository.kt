@@ -139,14 +139,10 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
         })
     }
 
-    fun detailEvent(
-        id: Int,
-        onSuccess: (DetailEventItem) -> Unit,
-        onError: (Throwable) -> Unit
-    ) {
+    fun detailEvent(id: Int, callback: DetailEventCallback) {
         api.lookupEvent(id).enqueue(object : Callback<DetailEventResponse> {
             override fun onFailure(call: Call<DetailEventResponse>, t: Throwable) {
-                onError(t)
+                callback.onError()
             }
 
             override fun onResponse(
@@ -202,22 +198,19 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                         }
                     }
                     result?.let {
-                        onSuccess(it[0])
+                        callback.onSuccess(it)
                     } ?: run {
-                        onError(Throwable("Data Empty!"))
+                        callback.onError()
                     }
                 } else {
-                    onError(Throwable("Something went wrong!"))
+                    callback.onError()
                 }
             }
 
         })
     }
 
-    fun searchEvent(
-        text: String,
-        callback: TheSportsDBRepositoryCallback
-    ) {
+    fun searchEvent(text: String, callback: TheSportsDBRepositoryCallback) {
         api.searchEvent(text).enqueue(object : Callback<SearchEventsResponse> {
             override fun onFailure(call: Call<SearchEventsResponse>, t: Throwable) {
                 callback.onError()

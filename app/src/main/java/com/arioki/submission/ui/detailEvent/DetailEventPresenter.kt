@@ -10,26 +10,28 @@
 package com.arioki.submission.ui.detailEvent
 
 import android.database.sqlite.SQLiteConstraintException
-import com.arioki.submission.App
 import com.arioki.submission.data.DetailEventItem
 import com.arioki.submission.data.DetailEventListItem
 import com.arioki.submission.db.Favorite
+import com.arioki.submission.db.SportDBHelper
+import com.arioki.submission.repository.DetailEventCallback
+import com.arioki.submission.repository.TheSportsDBRepository
 import org.jetbrains.anko.db.*
 
-class DetailEventPresenter(var id: Int) {
-    var view: DetailEventView? = null
-    fun attachView(view: DetailEventView) {
-        this.view = view
-    }
-
+class DetailEventPresenter(
+    var view: DetailEventView,
+    var id: Int,
+    private var repository: TheSportsDBRepository,
+    private var database: SportDBHelper
+) {
     fun getData() {
-        val showShimmer = view?.showShimmer()
+        val showShimmer = view.showShimmer()
         val data = getDataFromDatabase()
         if (data.isNotEmpty()) {
             parsingData(data)
-            view?.showRemoveFavoriteButton()
+            view.showRemoveFavoriteButton()
         } else {
-            view?.showAddFavoriteButton()
+            view.showAddFavoriteButton()
             getDataFromApi()
         }
     }
@@ -80,20 +82,25 @@ class DetailEventPresenter(var id: Int) {
                 columns["strLogoAway"].toString()
             )
         }
-        view?.finishLoadData(result[0])
+        view.finishLoadData(result[0])
     }
 
-    private fun getDataFromApi() {
-        App.instances.repository.detailEvent(this.id, {
-            view?.hiddenShimmer()
-            view?.finishLoadData(it)
-        }, {
-            view?.hiddenShimmer()
+    fun getDataFromApi() {
+        repository.detailEvent(this.id, object : DetailEventCallback {
+            override fun onError() {
+                view.hiddenShimmer()
+            }
+
+            override fun onSuccess(it: List<DetailEventItem>) {
+                view.hiddenShimmer()
+                view.finishLoadData(it[0])
+            }
+
         })
     }
 
     private fun getDataFromDatabase(): List<Map<String, Any?>> {
-        return App.instances.database.use {
+        return database.use {
             select(Favorite.tbName)
                 .whereArgs("idEvent == ${this@DetailEventPresenter.id}")
                 .exec {
@@ -152,13 +159,13 @@ class DetailEventPresenter(var id: Int) {
                 )
             }
         }
-        view?.finishLoadDataList(items)
+        view.finishLoadDataList(items)
     }
 
     fun getUrlLogo(idHomeTeam: Int, team: String) {
-        App.instances.repository.lookupTeam(idHomeTeam, {
+        repository.lookupTeam(idHomeTeam, {
             val url: String = it.strTeamBadge.toString()
-            view?.getUrlLogoDone(url, team)
+            view.getUrlLogoDone(url, team)
         }, {
         })
     }
@@ -170,7 +177,7 @@ class DetailEventPresenter(var id: Int) {
     ) {
         data.run {
             try {
-                App.instances.database.use {
+                database.use {
                     insert(
                         Favorite.tbName,
                         Favorite.fdateEventLocal to dateEventLocal,
@@ -215,7 +222,7 @@ class DetailEventPresenter(var id: Int) {
                         Favorite.fstrLogoAway to strLogoAway
                     )
                 }
-                view?.showRemoveFavoriteButton()
+                view.showRemoveFavoriteButton()
             } catch (e: SQLiteConstraintException) {
                 e.printStackTrace()
             }
@@ -225,13 +232,13 @@ class DetailEventPresenter(var id: Int) {
     fun removeFavorite(data: DetailEventItem) {
         data.run {
             try {
-                App.instances.database.use {
+                database.use {
                     delete(
                         Favorite.tbName, "(${Favorite.fidEvent} = {id})",
                         "id" to data.idEvent.toString()
                     )
                 }
-                view?.showAddFavoriteButton()
+                view.showAddFavoriteButton()
             } catch (e: SQLiteConstraintException) {
                 e.printStackTrace()
             }

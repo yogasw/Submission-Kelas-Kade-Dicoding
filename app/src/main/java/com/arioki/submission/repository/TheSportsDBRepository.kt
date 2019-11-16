@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/15/19 9:03 PM
+ *   Created by Yoga Setiawan on 11/16/19 7:13 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/15/19 8:33 PM
+ *   Last modified 11/16/19 7:13 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -221,7 +221,7 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
             ) {
                 if (response.isSuccessful) {
                     val result = response.body()?.event
-                        ?.filter { it -> it.strSport == "Soccer" }
+                        //                    ?.filter { it -> it.strSport == "Soccer" }
                         ?.map {
                             with(it) {
                                 EventItem(

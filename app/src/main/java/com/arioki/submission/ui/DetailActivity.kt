@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/16/19 7:13 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:21 AM
+ *   Last modified 11/15/19 9:05 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -34,7 +34,7 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        data = intent.getParcelableExtra("FootballItem")
+        data = intent.getParcelableExtra("FootballItem")!!
         valName = data.name.toString()
         valDescription = data.description.toString()
         valBadge = data.badge

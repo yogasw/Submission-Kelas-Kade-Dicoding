@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/16/19 7:13 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:15 AM
+ *   Last modified 11/15/19 10:01 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -23,7 +23,7 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         buildConfigField("String", "BASE_URL", '"https://www.thesportsdb.com/api/v1/json/1/"')
     }
     androidExtensions {
@@ -72,12 +72,19 @@ dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.4.0'
     implementation 'com.google.android.material:material:1.2.0-alpha01'
 
+    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
     testImplementation 'com.nhaarman:mockito-kotlin:1.5.0'
     testImplementation 'org.mockito:mockito-inline:3.0.0'
     testImplementation 'org.mockito:mockito-core:3.0.0'
-
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'com.android.support.test:runner:1.0.2'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    androidTestImplementation("com.android.support.test.espresso:espresso-contrib:2.2.2") {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'recyclerview-v7'
+    }
 }

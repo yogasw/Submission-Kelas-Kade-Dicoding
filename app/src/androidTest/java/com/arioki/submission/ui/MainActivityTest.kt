@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/16/19 7:13 AM
+ *   Created by Yoga Setiawan on 11/16/19 7:14 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/16/19 7:13 AM
+ *   Last modified 11/16/19 7:14 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -36,10 +36,12 @@ class MainActivityTest {
     fun mainActivityTest() {
         onView(withId(R.id.btnMenuSearch))
             .check(matches(isDisplayed()))
+        Thread.sleep(1000)
+
         onView(withId(R.id.btnMenuSearch))
             .perform(click())
-
         Thread.sleep(1000)
+
         onView(withContentDescription("Search"))
             .check(matches(isDisplayed()))
         Thread.sleep(1000)

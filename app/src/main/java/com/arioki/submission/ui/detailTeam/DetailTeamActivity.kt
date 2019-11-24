@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 7:48 PM
+ *   Created by Yoga Setiawan on 11/25/19 5:57 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 7:47 PM
+ *   Last modified 11/24/19 7:52 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -16,7 +16,8 @@ import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.adapter.PagerAdapter
 import com.arioki.submission.data.LookupAllTeamItem
-import com.arioki.submission.ui.favoriteNextEvent.FavoriteNextEventFragment
+import com.arioki.submission.ui.listPlayers.ListPlayersFragment
+import com.arioki.submission.ui.teamInfo.TeamInfoFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_team.*
 
@@ -43,8 +44,8 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamView {
         tv_country.text = data.strCountry
 
         val pages = listOf(
-            FavoriteNextEventFragment(),
-            FavoriteNextEventFragment()
+            TeamInfoFragment(),
+            ListPlayersFragment()
         )
         val title = listOf(
             "Team Info",

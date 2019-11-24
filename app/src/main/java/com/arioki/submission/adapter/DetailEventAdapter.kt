@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/25/19 5:57 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:15 AM
+ *   Last modified 11/25/19 5:03 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -38,7 +38,7 @@ class DetailEventAdapter(var context: Context?, private var items: List<DetailEv
 
     class ViewHolder(var view: View) : RecyclerView.ViewHolder(view) {
         private val home: TextView = view.tvHome
-        private val title: TextView = view.tvTitle
+        private val title: TextView = view.tv_title
         private val away: TextView = view.tvAway
         fun bindItem(detailEventListItem: DetailEventListItem) {
             if (detailEventListItem.home != "null") {

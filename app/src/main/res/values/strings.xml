@@ -1,8 +1,8 @@
 <!--
   ~ /**
-  ~   Created by Yoga Setiawan on 11/12/19 8:56 AM
+  ~   Created by Yoga Setiawan on 11/24/19 1:54 PM
   ~   Copyright (c) 2019 . All rights reserved.
-  ~   Last modified 11/12/19 7:15 AM
+  ~   Last modified 11/23/19 11:13 AM
   ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
   ~  */
   -->
@@ -85,4 +85,7 @@
     <string name="sample_country">Sample Country</string>
     <string name="data_empty">Data Empty !!</string>
     <string name="sample">Sample Text</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

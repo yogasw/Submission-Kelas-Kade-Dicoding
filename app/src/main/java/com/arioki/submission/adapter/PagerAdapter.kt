@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/24/19 1:54 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:15 AM
+ *   Last modified 11/23/19 11:25 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -15,7 +15,8 @@ import androidx.fragment.app.FragmentPagerAdapter
 
 class PagerAdapter(
     fm: FragmentManager,
-    private var pages: List<Fragment>
+    private var pages: List<Fragment>,
+    private var title: List<String>
 ) :
     FragmentPagerAdapter(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
@@ -28,9 +29,6 @@ class PagerAdapter(
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return when (position) {
-            0 -> "Next Match"
-            else -> "Past Match"
-        }
+        return title[position]
     }
 }

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~   Created by Yoga Setiawan on 11/24/19 1:54 PM
+  ~   Copyright (c) 2019 . All rights reserved.
+  ~   Last modified 11/24/19 1:52 PM
+  ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+  ~  */
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ui.match.MatchFragment">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:text="NEXT MATCH"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <fragment
+        android:id="@+id/fragment_next_event"
+        android:name="com.arioki.submission.ui.nextEvent.NextEventFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="8dp"
+        android:text="LAST MATCH"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <fragment
+        android:id="@+id/fragment_past_event"
+        android:name="com.arioki.submission.ui.pastEvent.PastEventFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
+</LinearLayout>

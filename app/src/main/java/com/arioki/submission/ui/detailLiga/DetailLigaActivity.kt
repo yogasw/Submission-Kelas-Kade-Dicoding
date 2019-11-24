@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/15/19 9:03 PM
+ *   Created by Yoga Setiawan on 11/24/19 1:54 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/15/19 9:02 PM
+ *   Last modified 11/24/19 1:52 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -19,8 +19,8 @@ import com.arioki.submission.adapter.PagerAdapter
 import com.arioki.submission.data.FootballItem
 import com.arioki.submission.data.LeaguesItem
 import com.arioki.submission.ext.logger
-import com.arioki.submission.ui.nextEvent.NextEventFragment
-import com.arioki.submission.ui.pastEvent.PastEventFragment
+import com.arioki.submission.ui.listTeam.ListTeamFragment
+import com.arioki.submission.ui.match.MatchFragment
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_liga.*
@@ -36,6 +36,7 @@ class DetailLigaActivity : AppCompatActivity(), DetailLigaView {
             iv_country.text = strCountry
             iv_date_first_event.text = dateFirstEvent
             iv_gender.text = strGender
+
             Picasso.get()
                 .load(strBadge)
                 .into(ivLogo, object : Callback {
@@ -82,11 +83,15 @@ class DetailLigaActivity : AppCompatActivity(), DetailLigaView {
 
     private fun initTab() {
         val pages = listOf(
-            NextEventFragment(),
-            PastEventFragment()
+            MatchFragment(),
+            ListTeamFragment()
+        )
+        val title = listOf(
+            "Match",
+            "Team"
         )
         viewPagerDetailLiga.adapter =
-            PagerAdapter(supportFragmentManager, pages)
+            PagerAdapter(supportFragmentManager, pages, title)
         tabsDetailLiga.setupWithViewPager(viewPagerDetailLiga)
     }
 }

@@ -1,18 +1,15 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/16/19 7:13 AM
+ *   Created by Yoga Setiawan on 11/24/19 1:54 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/16/19 7:13 AM
+ *   Last modified 11/24/19 11:10 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
 
 package com.arioki.submission.repository
 
-import com.arioki.submission.data.DetailEventItem
-import com.arioki.submission.data.EventItem
-import com.arioki.submission.data.LeaguesItem
-import com.arioki.submission.data.LookupTeamItem
+import com.arioki.submission.data.*
 import com.arioki.submission.remote.TheSportsDBApi
 import com.arioki.submission.remote.response.*
 import retrofit2.Call
@@ -329,6 +326,85 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                 }
             }
 
+        })
+    }
+
+    fun lookupAllTeam(id: Int, callback: LookupAllTeamRepositoryCallback) {
+        api.lookupAllTeam(id).enqueue(object : Callback<LookupAllTeam?> {
+            override fun onFailure(call: Call<LookupAllTeam?>, t: Throwable) {
+                callback.onError(t)
+            }
+
+            override fun onResponse(
+                call: Call<LookupAllTeam?>,
+                response: Response<LookupAllTeam?>
+            ) {
+                if (response.isSuccessful) {
+                    val result = response.body()?.teams?.map {
+                        with(it) {
+                            LookupAllTeamItem(
+                                idLeague,
+                                idSoccerXML,
+                                idTeam,
+                                intFormedYear,
+                                intLoved,
+                                intStadiumCapacity,
+                                strAlternate,
+                                strCountry,
+                                strDescriptionCN,
+                                strDescriptionDE,
+                                strDescriptionEN,
+                                strDescriptionES,
+                                strDescriptionFR,
+                                strDescriptionHU,
+                                strDescriptionIL,
+                                strDescriptionIT,
+                                strDescriptionJP,
+                                strDescriptionNL,
+                                strDescriptionNO,
+                                strDescriptionPL,
+                                strDescriptionPT,
+                                strDescriptionRU,
+                                strDescriptionSE,
+                                strDivision,
+                                strFacebook,
+                                strGender,
+                                strInstagram,
+                                strKeywords,
+                                strLeague,
+                                strLocked,
+                                strManager,
+                                strRSS,
+                                strSport,
+                                strStadium,
+                                strStadiumDescription,
+                                strStadiumLocation,
+                                strStadiumThumb,
+                                strTeam,
+                                strTeamBadge,
+                                strTeamBanner,
+                                strTeamFanart1,
+                                strTeamFanart2,
+                                strTeamFanart3,
+                                strTeamFanart4,
+                                strTeamJersey,
+                                strTeamLogo,
+                                strTeamShort,
+                                strTwitter,
+                                strWebsite,
+                                strYoutube
+                            )
+                        }
+                    }
+                    result?.let {
+                        callback.onSuccess(result)
+                    } ?: run {
+                        callback.onError(Throwable("Error Lookup All Team"))
+                    }
+                } else {
+                    callback.onError(Throwable("Error Lookup All Team"))
+                }
+            }
         })
     }
 }

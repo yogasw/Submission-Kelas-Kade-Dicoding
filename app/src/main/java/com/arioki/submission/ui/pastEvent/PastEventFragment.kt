@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/15/19 9:03 PM
+ *   Created by Yoga Setiawan on 11/24/19 1:54 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/15/19 8:51 PM
+ *   Last modified 11/24/19 1:52 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -55,7 +55,7 @@ class PastEventFragment : Fragment(), PastEventView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val activity = activity as DetailLigaActivity
-        layoutManager = LinearLayoutManager(context)
+        layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         id = activity.getId()
         presenter = PastEventPresenter(this, id!!, App.instances.repository)
         presenter.getData()

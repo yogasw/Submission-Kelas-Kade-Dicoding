@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
-  ~   Created by Yoga Setiawan on 11/12/19 8:56 AM
+  ~   Created by Yoga Setiawan on 11/24/19 1:54 PM
   ~   Copyright (c) 2019 . All rights reserved.
-  ~   Last modified 11/12/19 7:15 AM
+  ~   Last modified 11/23/19 10:37 AM
   ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
   ~  */
   -->
@@ -10,8 +10,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+    android:layout_width="330dp"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="10dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="16dp"
+    android:background="@drawable/bg_event_item"
     android:padding="16dp">
 
     <ImageView
@@ -118,9 +123,9 @@
         app:layout_constraintTop_toTopOf="@+id/ivDetailAwayLogo">
 
         <ImageView
-            android:contentDescription="@string/background_shimmer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@android:color/darker_gray" />
+            android:background="@android:color/darker_gray"
+            android:contentDescription="@string/background_shimmer" />
     </com.facebook.shimmer.ShimmerFrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

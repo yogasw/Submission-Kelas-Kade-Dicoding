@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/24/19 1:54 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:19 AM
+ *   Last modified 11/23/19 1:48 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -33,7 +33,11 @@ class FavoriteActivity : AppCompatActivity() {
             FavoriteNextEventFragment(),
             FavoritePastEventFragment()
         )
-        viewPagerFavorite.adapter = PagerAdapter(supportFragmentManager, pages)
+        val title = listOf(
+            "Next Match",
+            "Last Match"
+        )
+        viewPagerFavorite.adapter = PagerAdapter(supportFragmentManager, pages, title)
         tabFavorite.setupWithViewPager(viewPagerFavorite)
     }
 

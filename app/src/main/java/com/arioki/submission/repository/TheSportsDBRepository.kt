@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 1:54 PM
+ *   Created by Yoga Setiawan on 11/24/19 7:48 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 11:10 AM
+ *   Last modified 11/24/19 7:47 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -330,14 +330,14 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
     }
 
     fun lookupAllTeam(id: Int, callback: LookupAllTeamRepositoryCallback) {
-        api.lookupAllTeam(id).enqueue(object : Callback<LookupAllTeam?> {
-            override fun onFailure(call: Call<LookupAllTeam?>, t: Throwable) {
+        api.lookupAllTeam(id).enqueue(object : Callback<LookupAllTeamResponse?> {
+            override fun onFailure(call: Call<LookupAllTeamResponse?>, t: Throwable) {
                 callback.onError(t)
             }
 
             override fun onResponse(
-                call: Call<LookupAllTeam?>,
-                response: Response<LookupAllTeam?>
+                call: Call<LookupAllTeamResponse?>,
+                response: Response<LookupAllTeamResponse?>
             ) {
                 if (response.isSuccessful) {
                     val result = response.body()?.teams?.map {
@@ -403,6 +403,93 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
                     }
                 } else {
                     callback.onError(Throwable("Error Lookup All Team"))
+                }
+            }
+        })
+    }
+
+    fun lookupAllPlayers(id: Int, callback: LookupPlayersRepositoryCallback) {
+        api.lookupAllPlayers(id).enqueue(object : Callback<LookupAllPlayersResponse?> {
+            override fun onFailure(call: Call<LookupAllPlayersResponse?>, t: Throwable) {
+                callback.onError(t)
+            }
+
+            override fun onResponse(
+                call: Call<LookupAllPlayersResponse?>,
+                response: Response<LookupAllPlayersResponse?>
+            ) {
+                if (response.isSuccessful) {
+                    val result = response.body()?.player?.map {
+                        with(it) {
+                            LookupAllPlayerItem(
+                                dateBorn,
+                                dateSigned,
+                                idPlayer,
+                                idPlayerManager,
+                                idSoccerXML,
+                                idTeam,
+                                idTeam2,
+                                idTeamNational,
+                                intLoved,
+                                intSoccerXMLTeamID,
+                                strAgent,
+                                strBanner,
+                                strBirthLocation,
+                                strCollege,
+                                strCreativeCommons,
+                                strCutout,
+                                strDescriptionCN,
+                                strDescriptionDE,
+                                strDescriptionEN,
+                                strDescriptionES,
+                                strDescriptionFR,
+                                strDescriptionHU,
+                                strDescriptionIL,
+                                strDescriptionIT,
+                                strDescriptionJP,
+                                strDescriptionNL,
+                                strDescriptionNO,
+                                strDescriptionPL,
+                                strDescriptionPT,
+                                strDescriptionRU,
+                                strDescriptionSE,
+                                strFacebook,
+                                strFanart1,
+                                strFanart2,
+                                strFanart3,
+                                strFanart4,
+                                strGender,
+                                strHeight,
+                                strInstagram,
+                                strKit,
+                                strLocked,
+                                strNationality,
+                                strNumber,
+                                strOutfitter,
+                                strPlayer,
+                                strPosition,
+                                strRender,
+                                strSide,
+                                strSigning,
+                                strSport,
+                                strTeam,
+                                strTeam2,
+                                strThumb,
+                                strTwitter,
+                                strWage,
+                                strWebsite,
+                                strWeight,
+                                strYoutube
+                            )
+                        }
+                    }
+                    result?.let {
+                        callback.onSuccess(it)
+                    } ?: run {
+                        callback.onError(Throwable("Data empty"))
+                    }
+                } else {
+                    callback.onError(Throwable("Data is empty"))
                 }
             }
         })

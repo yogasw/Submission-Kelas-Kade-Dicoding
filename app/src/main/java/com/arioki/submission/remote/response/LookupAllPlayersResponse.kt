@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 1:54 PM
+ *   Created by Yoga Setiawan on 11/24/19 7:48 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 1:51 PM
+ *   Last modified 11/24/19 4:36 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -32,7 +32,7 @@ data class LookupAllPlayersResponse(
         @SerializedName("idTeam2")
         val idTeam2: String,
         @SerializedName("idTeamNational")
-        val idTeamNational: Any,
+        val idTeamNational: String,
         @SerializedName("intLoved")
         val intLoved: String,
         @SerializedName("intSoccerXMLTeamID")
@@ -44,15 +44,15 @@ data class LookupAllPlayersResponse(
         @SerializedName("strBirthLocation")
         val strBirthLocation: String,
         @SerializedName("strCollege")
-        val strCollege: Any,
+        val strCollege: String,
         @SerializedName("strCreativeCommons")
         val strCreativeCommons: String,
         @SerializedName("strCutout")
         val strCutout: String,
         @SerializedName("strDescriptionCN")
-        val strDescriptionCN: Any,
+        val strDescriptionCN: String,
         @SerializedName("strDescriptionDE")
-        val strDescriptionDE: Any,
+        val strDescriptionDE: String,
         @SerializedName("strDescriptionEN")
         val strDescriptionEN: String,
         @SerializedName("strDescriptionES")
@@ -60,25 +60,25 @@ data class LookupAllPlayersResponse(
         @SerializedName("strDescriptionFR")
         val strDescriptionFR: String,
         @SerializedName("strDescriptionHU")
-        val strDescriptionHU: Any,
+        val strDescriptionHU: String,
         @SerializedName("strDescriptionIL")
-        val strDescriptionIL: Any,
+        val strDescriptionIL: String,
         @SerializedName("strDescriptionIT")
-        val strDescriptionIT: Any,
+        val strDescriptionIT: String,
         @SerializedName("strDescriptionJP")
-        val strDescriptionJP: Any,
+        val strDescriptionJP: String,
         @SerializedName("strDescriptionNL")
-        val strDescriptionNL: Any,
+        val strDescriptionNL: String,
         @SerializedName("strDescriptionNO")
-        val strDescriptionNO: Any,
+        val strDescriptionNO: String,
         @SerializedName("strDescriptionPL")
-        val strDescriptionPL: Any,
+        val strDescriptionPL: String,
         @SerializedName("strDescriptionPT")
-        val strDescriptionPT: Any,
+        val strDescriptionPT: String,
         @SerializedName("strDescriptionRU")
-        val strDescriptionRU: Any,
+        val strDescriptionRU: String,
         @SerializedName("strDescriptionSE")
-        val strDescriptionSE: Any,
+        val strDescriptionSE: String,
         @SerializedName("strFacebook")
         val strFacebook: String,
         @SerializedName("strFanart1")

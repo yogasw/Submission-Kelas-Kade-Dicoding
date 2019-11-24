@@ -2,7 +2,7 @@
  * *
  *   Created by Yoga Setiawan on 11/24/19 7:48 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 4:43 PM
+ *   Last modified 11/24/19 4:34 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -15,23 +15,39 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class LookupAllTeamItem(
-    @SerializedName("idLeague")
-    val idLeague: String?,
+data class LookupAllPlayerItem(
+    @SerializedName("dateBorn")
+    val dateBorn: String?,
+    @SerializedName("dateSigned")
+    val dateSigned: String?,
+    @SerializedName("idPlayer")
+    val idPlayer: String?,
+    @SerializedName("idPlayerManager")
+    val idPlayerManager: String?,
     @SerializedName("idSoccerXML")
     val idSoccerXML: String?,
     @SerializedName("idTeam")
     val idTeam: String?,
-    @SerializedName("intFormedYear")
-    val intFormedYear: String?,
+    @SerializedName("idTeam2")
+    val idTeam2: String?,
+    @SerializedName("idTeamNational")
+    val idTeamNational: String?,
     @SerializedName("intLoved")
     val intLoved: String?,
-    @SerializedName("intStadiumCapacity")
-    val intStadiumCapacity: String?,
-    @SerializedName("strAlternate")
-    val strAlternate: String?,
-    @SerializedName("strCountry")
-    val strCountry: String?,
+    @SerializedName("intSoccerXMLTeamID")
+    val intSoccerXMLTeamID: String?,
+    @SerializedName("strAgent")
+    val strAgent: String?,
+    @SerializedName("strBanner")
+    val strBanner: String?,
+    @SerializedName("strBirthLocation")
+    val strBirthLocation: String?,
+    @SerializedName("strCollege")
+    val strCollege: String?,
+    @SerializedName("strCreativeCommons")
+    val strCreativeCommons: String?,
+    @SerializedName("strCutout")
+    val strCutout: String?,
     @SerializedName("strDescriptionCN")
     val strDescriptionCN: String?,
     @SerializedName("strDescriptionDE")
@@ -62,58 +78,58 @@ data class LookupAllTeamItem(
     val strDescriptionRU: String?,
     @SerializedName("strDescriptionSE")
     val strDescriptionSE: String?,
-    @SerializedName("strDivision")
-    val strDivision: String?,
     @SerializedName("strFacebook")
     val strFacebook: String?,
+    @SerializedName("strFanart1")
+    val strFanart1: String?,
+    @SerializedName("strFanart2")
+    val strFanart2: String?,
+    @SerializedName("strFanart3")
+    val strFanart3: String?,
+    @SerializedName("strFanart4")
+    val strFanart4: String?,
     @SerializedName("strGender")
     val strGender: String?,
+    @SerializedName("strHeight")
+    val strHeight: String?,
     @SerializedName("strInstagram")
     val strInstagram: String?,
-    @SerializedName("strKeywords")
-    val strKeywords: String?,
-    @SerializedName("strLeague")
-    val strLeague: String?,
+    @SerializedName("strKit")
+    val strKit: String?,
     @SerializedName("strLocked")
     val strLocked: String?,
-    @SerializedName("strManager")
-    val strManager: String?,
-    @SerializedName("strRSS")
-    val strRSS: String?,
+    @SerializedName("strNationality")
+    val strNationality: String?,
+    @SerializedName("strNumber")
+    val strNumber: String?,
+    @SerializedName("strOutfitter")
+    val strOutfitter: String?,
+    @SerializedName("strPlayer")
+    val strPlayer: String?,
+    @SerializedName("strPosition")
+    val strPosition: String?,
+    @SerializedName("strRender")
+    val strRender: String?,
+    @SerializedName("strSide")
+    val strSide: String?,
+    @SerializedName("strSigning")
+    val strSigning: String?,
     @SerializedName("strSport")
     val strSport: String?,
-    @SerializedName("strStadium")
-    val strStadium: String?,
-    @SerializedName("strStadiumDescription")
-    val strStadiumDescription: String?,
-    @SerializedName("strStadiumLocation")
-    val strStadiumLocation: String?,
-    @SerializedName("strStadiumThumb")
-    val strStadiumThumb: String?,
     @SerializedName("strTeam")
     val strTeam: String?,
-    @SerializedName("strTeamBadge")
-    val strTeamBadge: String?,
-    @SerializedName("strTeamBanner")
-    val strTeamBanner: String?,
-    @SerializedName("strTeamFanart1")
-    val strTeamFanart1: String?,
-    @SerializedName("strTeamFanart2")
-    val strTeamFanart2: String?,
-    @SerializedName("strTeamFanart3")
-    val strTeamFanart3: String?,
-    @SerializedName("strTeamFanart4")
-    val strTeamFanart4: String?,
-    @SerializedName("strTeamJersey")
-    val strTeamJersey: String?,
-    @SerializedName("strTeamLogo")
-    val strTeamLogo: String?,
-    @SerializedName("strTeamShort")
-    val strTeamShort: String?,
+    @SerializedName("strTeam2")
+    val strTeam2: String?,
+    @SerializedName("strThumb")
+    val strThumb: String?,
     @SerializedName("strTwitter")
     val strTwitter: String?,
+    @SerializedName("strWage")
+    val strWage: String?,
     @SerializedName("strWebsite")
     val strWebsite: String?,
+    @SerializedName("strWeight")
+    val strWeight: String?,
     @SerializedName("strYoutube")
     val strYoutube: String?
 ) : Parcelable

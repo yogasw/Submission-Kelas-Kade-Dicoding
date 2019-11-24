@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 1:54 PM
+ *   Created by Yoga Setiawan on 11/24/19 7:48 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 10:57 AM
+ *   Last modified 11/24/19 1:58 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -46,6 +46,9 @@ object TheSportsDBApi {
         fun lookupTeam(@Query("id") id: Int): Call<LookupTeamResponse>
 
         @GET("lookup_all_teams.php")
-        fun lookupAllTeam(@Query("id") id: Int): Call<LookupAllTeam>
+        fun lookupAllTeam(@Query("id") id: Int): Call<LookupAllTeamResponse>
+
+        @GET("lookup_all_players.php")
+        fun lookupAllPlayers(@Query("id") id: Int): Call<LookupAllPlayersResponse>
     }
 }

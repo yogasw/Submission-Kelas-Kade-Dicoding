@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 1:54 PM
+ *   Created by Yoga Setiawan on 11/24/19 7:48 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 10:55 AM
+ *   Last modified 11/24/19 4:44 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -12,7 +12,7 @@ package com.arioki.submission.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class LookupAllTeam(
+data class LookupAllTeamResponse(
     @SerializedName("teams")
     val teams: List<Team>
 ) {
@@ -34,7 +34,7 @@ data class LookupAllTeam(
         @SerializedName("strCountry")
         val strCountry: String,
         @SerializedName("strDescriptionCN")
-        val strDescriptionCN: Any,
+        val strDescriptionCN: String,
         @SerializedName("strDescriptionDE")
         val strDescriptionDE: String,
         @SerializedName("strDescriptionEN")
@@ -42,29 +42,29 @@ data class LookupAllTeam(
         @SerializedName("strDescriptionES")
         val strDescriptionES: String,
         @SerializedName("strDescriptionFR")
-        val strDescriptionFR: Any,
+        val strDescriptionFR: String,
         @SerializedName("strDescriptionHU")
-        val strDescriptionHU: Any,
+        val strDescriptionHU: String,
         @SerializedName("strDescriptionIL")
-        val strDescriptionIL: Any,
+        val strDescriptionIL: String,
         @SerializedName("strDescriptionIT")
         val strDescriptionIT: String,
         @SerializedName("strDescriptionJP")
-        val strDescriptionJP: Any,
+        val strDescriptionJP: String,
         @SerializedName("strDescriptionNL")
-        val strDescriptionNL: Any,
+        val strDescriptionNL: String,
         @SerializedName("strDescriptionNO")
-        val strDescriptionNO: Any,
+        val strDescriptionNO: String,
         @SerializedName("strDescriptionPL")
-        val strDescriptionPL: Any,
+        val strDescriptionPL: String,
         @SerializedName("strDescriptionPT")
-        val strDescriptionPT: Any,
+        val strDescriptionPT: String,
         @SerializedName("strDescriptionRU")
-        val strDescriptionRU: Any,
+        val strDescriptionRU: String,
         @SerializedName("strDescriptionSE")
-        val strDescriptionSE: Any,
+        val strDescriptionSE: String,
         @SerializedName("strDivision")
-        val strDivision: Any,
+        val strDivision: String,
         @SerializedName("strFacebook")
         val strFacebook: String,
         @SerializedName("strGender")

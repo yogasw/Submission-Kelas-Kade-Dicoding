@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/14/19 11:12 AM
+ *   Created by Yoga Setiawan on 11/27/19 10:26 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/14/19 11:12 AM
+ *   Last modified 11/27/19 10:02 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -49,7 +49,7 @@ class SearchEventPresenterTest {
             verify(repository).searchEvent(eq(text), capture())
             firstValue.onSuccess(eventItem)
         }
-        verify(view).finishLoadData(eventItem)
+        verify(view).finishSearchMatch(eventItem)
         verify(view).hiddenSimmer()
     }
 

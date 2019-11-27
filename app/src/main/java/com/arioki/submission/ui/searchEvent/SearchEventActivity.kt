@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/27/19 9:31 PM
+ *   Created by Yoga Setiawan on 11/27/19 10:26 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/27/19 9:31 PM
+ *   Last modified 11/27/19 10:26 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -19,9 +19,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.arioki.submission.App
 import com.arioki.submission.R
 import com.arioki.submission.adapter.EventAdapter
+import com.arioki.submission.adapter.ListPlayersAdapter
+import com.arioki.submission.adapter.ListTeamAdapter
 import com.arioki.submission.data.EventItem
+import com.arioki.submission.data.LookupAllPlayerItem
+import com.arioki.submission.data.LookupAllTeamItem
 import com.arioki.submission.ext.toaster
 import com.arioki.submission.ui.detailEvent.DetailEventActivity
+import com.arioki.submission.ui.detailPlayers.DetailPayersActivity
+import com.arioki.submission.ui.detailTeam.DetailTeamActivity
 import kotlinx.android.synthetic.main.activity_search.*
 
 
@@ -36,6 +42,35 @@ class SearchEventActivity : AppCompatActivity(),
         icEmpty.visibility = View.VISIBLE
     }
 
+    override fun getSearchType(): String = spinner.selectedItem.toString()
+    override fun searchError() {
+        "Please Select Search Type".toaster(this)
+    }
+
+    override fun finishSearchTeam(lookupAllTeamItem: List<LookupAllTeamItem>) {
+        val layoutManager = LinearLayoutManager(this)
+        val adapter = ListTeamAdapter(this, lookupAllTeamItem) {
+            val intent = Intent(this, DetailTeamActivity::class.java)
+            intent.putExtra("dataTeam", it)
+            startActivity(intent)
+        }
+
+        rvSearch.layoutManager = layoutManager
+        rvSearch.adapter = adapter
+    }
+
+    override fun finishSearchPlayer(lookupAllPlayerItem: List<LookupAllPlayerItem>) {
+        val layoutManager = LinearLayoutManager(this)
+        val adapter = ListPlayersAdapter(this, lookupAllPlayerItem) {
+            val intent = Intent(this, DetailPayersActivity::class.java)
+            intent.putExtra("dataPlayer", it)
+            startActivity(intent)
+        }
+
+        rvSearch.layoutManager = layoutManager
+        rvSearch.adapter = adapter
+    }
+
     override fun showShimmer() {
         shimmerSearch1.startShimmer()
         shimmerSearch2.startShimmer()
@@ -45,10 +80,9 @@ class SearchEventActivity : AppCompatActivity(),
         shimmerSearch2.visibility = View.VISIBLE
     }
 
-    lateinit var adapter: EventAdapter
-    override fun finishLoadData(it: List<EventItem>) {
+    override fun finishSearchMatch(it: List<EventItem>) {
         val layoutManager = LinearLayoutManager(this)
-        adapter = EventAdapter(this, it) {
+        val adapter = EventAdapter(this, it) {
             val intent = Intent(this, DetailEventActivity::class.java)
             intent.putExtra("idEvent", it.id?.toInt())
             startActivity(intent)
@@ -93,7 +127,7 @@ class SearchEventActivity : AppCompatActivity(),
             }
 
         })
-        val items = arrayOf("Select", "Team", "Match")
+        val items = arrayOf("Select", "Team", "Match", "Player")
         val adapter = ArrayAdapter(this, R.layout.dropdown_item, items)
         spinner.adapter = adapter
     }

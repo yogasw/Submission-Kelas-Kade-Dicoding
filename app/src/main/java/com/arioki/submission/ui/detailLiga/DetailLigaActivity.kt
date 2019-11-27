@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 1:54 PM
+ *   Created by Yoga Setiawan on 11/27/19 9:31 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 1:52 PM
+ *   Last modified 11/26/19 10:33 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -38,7 +38,7 @@ class DetailLigaActivity : AppCompatActivity(), DetailLigaView {
             iv_gender.text = strGender
 
             Picasso.get()
-                .load(strBadge)
+                .load("$strBadge/preview")
                 .into(ivLogo, object : Callback {
                     override fun onSuccess() {
                         shimmerInfoLeague.visibility = View.GONE
@@ -56,14 +56,14 @@ class DetailLigaActivity : AppCompatActivity(), DetailLigaView {
         shimmerInfoLeague.startShimmer()
     }
 
-    lateinit var data: FootballItem
+    var data: FootballItem? = null
     lateinit var presenter: DetailLigaPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         setContentView(R.layout.activity_detail_liga)
-        data = intent.getParcelableExtra("FootballItem")!!
+        data = intent.getParcelableExtra("FootballItem")
         initTab()
         presenter = DetailLigaPresenter(this, getId(), App.instances.repository)
         presenter.getDetailLiga()
@@ -77,7 +77,7 @@ class DetailLigaActivity : AppCompatActivity(), DetailLigaView {
     }
 
     fun getId(): Int {
-        val id = data.id.toString()
+        val id = data?.id.toString()
         return id.toInt()
     }
 

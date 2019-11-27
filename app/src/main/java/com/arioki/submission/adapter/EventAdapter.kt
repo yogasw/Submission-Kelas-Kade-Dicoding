@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/15/19 9:03 PM
+ *   Created by Yoga Setiawan on 11/27/19 9:31 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/15/19 8:42 PM
+ *   Last modified 11/26/19 9:20 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -96,7 +96,7 @@ class EventAdapter(
                             lookupTeamItem.run {
 
                                 Picasso.get()
-                                    .load(strTeamBadge)
+                                    .load("$strTeamBadge/preview")
                                     .into(ivHomeLogo, object : Callback {
                                         override fun onSuccess() {
                                             shimmerHome.visibility = View.GONE
@@ -121,7 +121,7 @@ class EventAdapter(
                         override fun onSuccess(lookupTeamItem: LookupTeamItem) {
                             lookupTeamItem.run {
                                 Picasso.get()
-                                    .load(strTeamBadge)
+                                    .load("$strTeamBadge/preview")
                                     .into(ivAwayLogo, object : Callback {
                                         override fun onSuccess() {
                                             shimmerAway.visibility = View.GONE

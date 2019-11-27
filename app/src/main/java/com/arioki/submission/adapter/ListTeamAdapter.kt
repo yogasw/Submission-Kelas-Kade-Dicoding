@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 1:54 PM
+ *   Created by Yoga Setiawan on 11/27/19 9:31 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 1:52 PM
+ *   Last modified 11/26/19 9:20 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -35,7 +35,7 @@ class ListTeamAdapter(
             itemView.tv_description.text = items.strDescriptionEN
             itemView.tv_name_team.text = items.strTeam
             Picasso.get()
-                .load(items.strTeamBadge)
+                .load("${items.strTeamBadge}/preview")
                 .into(itemView.iv_badge)
             itemView.setOnClickListener {
                 listener(items)

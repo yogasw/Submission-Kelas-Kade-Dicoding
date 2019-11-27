@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 11/27/19 9:31 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:21 AM
+ *   Last modified 11/26/19 9:38 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -53,7 +53,7 @@ class DetailEventActivity : AppCompatActivity(),
         if (team == "home") {
             strLogoHome = strTeamBadge
             Picasso.get()
-                .load(strTeamBadge)
+                .load("$strTeamBadge/preview")
                 .into(ivLogoHome, object : Callback {
                     override fun onSuccess() {
                         hiddenShimmer()
@@ -64,7 +64,7 @@ class DetailEventActivity : AppCompatActivity(),
                     }
                 })
             Picasso.get()
-                .load(strTeamBadge)
+                .load("$strTeamBadge/preview")
                 .into(ivDetailHomeLogo, object : Callback {
                     override fun onSuccess() {
                         hiddenShimmer()
@@ -77,7 +77,7 @@ class DetailEventActivity : AppCompatActivity(),
         } else if (team == "away") {
             strLogoAway = strTeamBadge
             Picasso.get()
-                .load(strTeamBadge)
+                .load("$strTeamBadge/preview")
                 .into(ivLogoAway, object : Callback {
                     override fun onSuccess() {
                         hiddenShimmer()
@@ -89,7 +89,7 @@ class DetailEventActivity : AppCompatActivity(),
                 })
 
             Picasso.get()
-                .load(strTeamBadge)
+                .load("$strTeamBadge/preview")
                 .into(ivDetailAwayLogo, object : Callback {
                     override fun onSuccess() {
                         hiddenShimmer()

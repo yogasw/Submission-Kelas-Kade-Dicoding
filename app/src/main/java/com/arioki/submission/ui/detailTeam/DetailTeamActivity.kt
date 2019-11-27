@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/25/19 5:57 AM
+ *   Created by Yoga Setiawan on 11/27/19 9:31 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 7:52 PM
+ *   Last modified 11/27/19 9:31 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -11,6 +11,7 @@ package com.arioki.submission.ui.detailTeam
 
 import android.os.Bundle
 import android.view.Menu
+import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.arioki.submission.App
 import com.arioki.submission.R
@@ -38,7 +39,7 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamView {
 
     private fun iniDetailTeam(data: LookupAllTeamItem) {
         Picasso.get()
-            .load(data.strTeamBadge)
+            .load(data.strTeamBadge + "/preview")
             .into(iv_logo_team)
         tv_team.text = data.strTeam
         tv_country.text = data.strCountry
@@ -60,5 +61,12 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamView {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.favorite, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

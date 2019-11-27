@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/25/19 5:57 AM
+ *   Created by Yoga Setiawan on 11/27/19 9:31 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/25/19 5:53 AM
+ *   Last modified 11/26/19 8:11 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -18,11 +18,12 @@ import com.arioki.submission.R
 import com.arioki.submission.data.TeamInfoItem
 import kotlinx.android.synthetic.main.info_team_items.view.*
 
-class TeamInfoAdapter(var context: Context, var infoItems: List<TeamInfoItem>) :
+class TeamInfoAdapter(var context: Context?, var infoItems: List<TeamInfoItem>) :
     RecyclerView.Adapter<TeamInfoAdapter.VH>() {
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(items: TeamInfoItem) {
+            itemView.image.visibility = View.GONE
             itemView.tv_title.text = items.title
             itemView.tv_value.text = items.value
         }

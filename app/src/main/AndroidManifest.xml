@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
   ~ /**
-  ~   Created by Yoga Setiawan on 11/24/19 7:48 PM
+  ~   Created by Yoga Setiawan on 11/27/19 9:31 PM
   ~   Copyright (c) 2019 . All rights reserved.
-  ~   Last modified 11/24/19 4:05 PM
+  ~   Last modified 11/26/19 3:51 PM
   ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
   ~  */
   -->
@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.detailTeam.DetailTeamActivity"></activity>
+        <activity android:name=".ui.detailPlayers.DetailPayersActivity"></activity>
+        <activity android:name=".ui.detailTeam.DetailTeamActivity" />
         <activity android:name=".ui.FavoriteActivity" />
         <activity
             android:name=".ui.searchEvent.SearchEventActivity"

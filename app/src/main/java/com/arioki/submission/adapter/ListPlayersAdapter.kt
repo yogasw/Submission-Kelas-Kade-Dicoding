@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/25/19 5:57 AM
+ *   Created by Yoga Setiawan on 11/27/19 9:31 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/25/19 5:53 AM
+ *   Last modified 11/27/19 9:31 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -15,20 +15,27 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.arioki.submission.R
-import com.arioki.submission.data.TeamInfoItem
+import com.arioki.submission.data.LookupAllPlayerItem
+import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.info_team_items.view.*
 
 class ListPlayersAdapter(
-    var context: Context,
-    var infoItems: List<TeamInfoItem>,
-    var listener: (TeamInfoItem) -> Unit
+    var context: Context?,
+    private var infoItems: List<LookupAllPlayerItem>,
+    var listener: (LookupAllPlayerItem) -> Unit
 ) :
     RecyclerView.Adapter<ListPlayersAdapter.VH>() {
 
     class VH(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(items: TeamInfoItem, listener: (TeamInfoItem) -> Unit) {
-            itemView.tv_title.text = items.title
-            itemView.tv_value.text = items.value
+        fun bind(items: LookupAllPlayerItem, listener: (LookupAllPlayerItem) -> Unit) {
+            itemView.tv_title.text = items.strPlayer
+            itemView.tv_value.text = items.strNationality
+            Picasso.get()
+                .load(items.strCutout + "/preview")
+                .into(itemView.image)
+            itemView.setOnClickListener {
+                listener(items)
+            }
         }
     }
 

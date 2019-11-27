@@ -1,8 +1,8 @@
 <!--
   ~ /**
-  ~   Created by Yoga Setiawan on 11/25/19 5:57 AM
+  ~   Created by Yoga Setiawan on 11/27/19 9:31 PM
   ~   Copyright (c) 2019 . All rights reserved.
-  ~   Last modified 11/24/19 7:49 PM
+  ~   Last modified 11/27/19 9:08 PM
   ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
   ~  */
   -->
@@ -68,6 +68,62 @@
         <item>Lineup Midfield</item>
         <item>Lineup Substitutes</item>
     </string-array>
+    <string-array name="team_info">
+        <item>ID Team</item>
+        <item>Name Team</item>
+        <item>Team Short</item>
+        <item>Alternate</item>
+        <item>Formed Year</item>
+        <item>Sport</item>
+        <item>League</item>
+        <item>ID League</item>
+        <item>Division</item>
+        <item>Manager</item>
+        <item>Stadium</item>
+        <item>Keywords</item>
+        <item>Stadium Location</item>
+        <item>Stadium Capacity</item>
+        <item>Website</item>
+        <item>Facebook</item>
+        <item>Twitter</item>
+        <item>Instagram</item>
+        <item>Youtube</item>
+        <item>RSS</item>
+        <item>Gender</item>
+        <item>Country</item>
+        <item>Locked</item>
+        <item>Description</item>
+    </string-array>
+    <string-array name="player_info">
+        <item>Nationality</item>
+        <item>Player</item>
+        <item>Team</item>
+        <item>Team 2</item>
+        <item>Sport</item>
+        <item>Date Born</item>
+        <item>Number</item>
+        <item>dateSigned</item>
+        <item>Signing</item>
+        <item>Wage</item>
+        <item>Outfitter</item>
+        <item>Kit</item>
+        <item>Agent</item>
+        <item>BirthLocation</item>
+        <item>Description</item>
+        <item>Gender</item>
+        <item>Side</item>
+        <item>Position</item>
+        <item>College</item>
+        <item>Facebook</item>
+        <item>Website</item>
+        <item>Twitter</item>
+        <item>Instagram</item>
+        <item>Youtube</item>
+        <item>Height</item>
+        <item>Weight</item>
+        <item>intLoved</item>
+        <item>Status Locked</item>
+    </string-array>
     <string name="away_team">Away Team</string>
     <string name="home_team">Home Team</string>
     <string name="logo_home_team">Logo Home Team</string>
@@ -85,7 +141,5 @@
     <string name="sample_country">Sample Country</string>
     <string name="data_empty">Data Empty !!</string>
     <string name="sample">Sample Text</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="detail_player">Detail Player :</string>
 </resources>

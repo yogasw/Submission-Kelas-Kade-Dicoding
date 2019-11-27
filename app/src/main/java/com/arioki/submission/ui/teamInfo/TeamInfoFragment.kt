@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/25/19 5:57 AM
+ *   Created by Yoga Setiawan on 11/27/19 9:31 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/25/19 5:57 AM
+ *   Last modified 11/27/19 9:31 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -24,9 +24,8 @@ import kotlinx.android.synthetic.main.fragment_team_info.*
 
 
 class TeamInfoFragment : Fragment(), TeamInfoView {
-    lateinit var infoAdapter: TeamInfoAdapter
-    lateinit var infoItems: List<TeamInfoItem>
-    lateinit var presenter: TeamInfoPresenter
+    private lateinit var infoAdapter: TeamInfoAdapter
+    private lateinit var presenter: TeamInfoPresenter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,17 +37,15 @@ class TeamInfoFragment : Fragment(), TeamInfoView {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter = TeamInfoPresenter(this, App.instances.repository)
+        val titles = resources.getStringArray(R.array.team_info)
         val activity = activity as DetailTeamActivity
-        presenter.getData(activity.getDataTeam())
+        presenter.getData(activity.getDataTeam(), titles)
     }
 
-    private fun initRv() {
-        context?.let {
-            infoAdapter = TeamInfoAdapter(it, infoItems)
-            rv_team_info.layoutManager =
-                LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            rv_team_info.adapter = infoAdapter
-        }
-
+    override fun getDataFinish(items: MutableList<TeamInfoItem>) {
+        infoAdapter = TeamInfoAdapter(context, items)
+        rv_team_info.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+        rv_team_info.adapter = infoAdapter
     }
 }

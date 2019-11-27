@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/27/19 9:31 PM
+ *   Created by Yoga Setiawan on 11/27/19 10:42 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/26/19 10:33 PM
+ *   Last modified 11/27/19 10:32 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -46,9 +46,7 @@ class ListPlayersFragment : Fragment(), ListPlayersView {
 
     }
 
-    override fun getDataPlayersError(t: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getDataPlayersError(t: Throwable) {}
 
     override fun getDataPlayersSuccess(lookupAllPlayerItem: List<LookupAllPlayerItem>) {
 

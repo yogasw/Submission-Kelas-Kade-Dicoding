@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
-  ~   Created by Yoga Setiawan on 11/12/19 8:56 AM
+  ~   Created by Yoga Setiawan on 11/27/19 10:42 PM
   ~   Copyright (c) 2019 . All rights reserved.
-  ~   Last modified 11/12/19 7:15 AM
+  ~   Last modified 11/27/19 10:41 PM
   ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
   ~  */
   -->
@@ -10,13 +10,11 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:rotation="90">
+    android:layout_height="match_parent">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:text="@string/data_empty"
         android:textSize="60sp"
         android:textStyle="bold"

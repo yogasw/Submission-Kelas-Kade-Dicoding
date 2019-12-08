@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/27/19 10:42 PM
+ *   Created by Yoga Setiawan on 12/8/19 11:31 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/27/19 10:32 PM
+ *   Last modified 11/28/19 5:06 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -105,8 +105,8 @@ class ListTeamFragment : Fragment(), ListTeamView {
             intent.putExtra("dataTeam", data)
             startActivity(intent)
         }
-        rv_list_team.layoutManager =
+        rv_list_team?.layoutManager =
             LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-        rv_list_team.adapter = adapter
+        rv_list_team?.adapter = adapter
     }
 }

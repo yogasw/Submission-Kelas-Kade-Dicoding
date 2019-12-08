@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/27/19 9:31 PM
+ *   Created by Yoga Setiawan on 12/8/19 11:31 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/26/19 10:33 PM
+ *   Last modified 11/28/19 5:04 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -21,6 +21,7 @@ import com.arioki.submission.data.LeaguesItem
 import com.arioki.submission.ext.logger
 import com.arioki.submission.ui.listTeam.ListTeamFragment
 import com.arioki.submission.ui.match.MatchFragment
+import com.arioki.submission.ui.standingsEvent.StandingsEventFragment
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.activity_detail_liga.*
@@ -84,10 +85,12 @@ class DetailLigaActivity : AppCompatActivity(), DetailLigaView {
     private fun initTab() {
         val pages = listOf(
             MatchFragment(),
+            StandingsEventFragment(),
             ListTeamFragment()
         )
         val title = listOf(
             "Match",
+            "Standings",
             "Team"
         )
         viewPagerDetailLiga.adapter =

@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 1:54 PM
+ *   Created by Yoga Setiawan on 12/8/19 11:31 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 1:52 PM
+ *   Last modified 11/28/19 8:51 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -51,8 +51,8 @@ class NextEventFragment : Fragment(), NextEventView {
     }
 
     override fun hiddenSimmer() {
-        shimmerNextMatch.visibility = View.GONE
-        rvNextMatch.visibility = View.VISIBLE
+        shimmerNextMatch?.visibility = View.GONE
+        rvNextMatch?.visibility = View.VISIBLE
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

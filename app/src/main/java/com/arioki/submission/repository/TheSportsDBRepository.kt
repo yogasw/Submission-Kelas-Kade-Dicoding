@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/27/19 10:26 PM
+ *   Created by Yoga Setiawan on 12/8/19 11:31 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/27/19 10:26 PM
+ *   Last modified 11/28/19 6:04 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -585,7 +585,7 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
     }
 
     fun searchTeam(value: String, callback: LookupAllTeamRepositoryCallback) {
-        api.searchTeam(value).enqueue(object : Callback<LookupAllTeamResponse?> {
+        api.searchTeam(value).enqueue(object : Callback<LookupAllTeamResponse> {
             override fun onFailure(call: Call<LookupAllTeamResponse?>, t: Throwable) {
                 callback.onError(t)
             }
@@ -664,4 +664,75 @@ class TheSportsDBRepository(private val api: TheSportsDBApi.Api) {
             }
         })
     }
+
+    fun allLeague(callback: AllLeagueRepositoryCallback) {
+        api.allLeagues().enqueue(object : Callback<AllLeagueResponse?> {
+            override fun onFailure(call: Call<AllLeagueResponse?>, t: Throwable) {
+                callback.onError(t)
+            }
+
+            override fun onResponse(
+                call: Call<AllLeagueResponse?>,
+                response: Response<AllLeagueResponse?>
+            ) {
+                if (response.isSuccessful) {
+                    val result = response.body()?.leagues
+                        ?.filter { it -> it.strSport == "Soccer" }
+                        ?.map {
+                            with(it) {
+                                AllLeagueItem(idLeague, strLeague, strLeagueAlternate, strSport)
+                            }
+                        }
+                    result?.let {
+                        callback.onSuccess(result)
+                    } ?: run {
+                        callback.onError(Throwable("Error Lookup All Team"))
+                    }
+                } else {
+                    callback.onError(Throwable("Get Data Error"))
+                }
+            }
+        })
+
+    }
+
+    fun standingsMatch(id: Int, callback: StandingsEventRepositoryCallback) {
+        api.standingEvent(id).enqueue(object : Callback<StandingsEventResponse?> {
+            override fun onFailure(call: Call<StandingsEventResponse?>, t: Throwable) {
+                callback.onError(t)
+            }
+
+            override fun onResponse(
+                call: Call<StandingsEventResponse?>,
+                response: Response<StandingsEventResponse?>
+            ) {
+                if (response.isSuccessful) {
+                    val result = response.body()?.table?.map {
+                        with(it) {
+                            StandingsEventItem(
+                                draw,
+                                goalsagainst,
+                                goalsdifference,
+                                goalsfor,
+                                loss,
+                                name,
+                                played,
+                                teamid,
+                                total,
+                                win
+                            )
+                        }
+                    }
+                    result?.let {
+                        callback.onSuccess(it)
+                    } ?: run {
+                        callback.onError(Throwable("Data Empty"))
+                    }
+                } else {
+                    callback.onError(Throwable("Data Empty"))
+                }
+            }
+        })
+    }
 }
+

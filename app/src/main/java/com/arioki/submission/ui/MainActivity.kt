@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/15/19 9:03 PM
+ *   Created by Yoga Setiawan on 12/8/19 11:31 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/15/19 7:45 PM
+ *   Last modified 11/28/19 8:10 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         MainUi().setContentView(this)
+
     }
 
     class MainUi : AnkoComponent<MainActivity>, AnkoLogger {

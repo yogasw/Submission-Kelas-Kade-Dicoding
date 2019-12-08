@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/27/19 10:26 PM
+ *   Created by Yoga Setiawan on 12/8/19 5:46 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/27/19 10:26 PM
+ *   Last modified 12/8/19 5:43 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -11,6 +11,7 @@ package com.arioki.submission.ui.searchEvent
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.SearchView
@@ -114,6 +115,12 @@ class SearchEventActivity : AppCompatActivity(),
 
     private fun initToolbar() {
         setSupportActionBar(toolbar)
+
+        supportActionBar?.run {
+            this.setDisplayHomeAsUpEnabled(true)
+            this.setHomeAsUpIndicator(R.drawable.ic_arrow_back_black_24dp)
+        }
+
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
                 spinner.selectedItem.toaster(applicationContext)
@@ -130,6 +137,13 @@ class SearchEventActivity : AppCompatActivity(),
         val items = arrayOf("Select", "Team", "Match", "Player")
         val adapter = ArrayAdapter(this, R.layout.dropdown_item, items)
         spinner.adapter = adapter
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            finish()
+        }
+        return super.onOptionsItemSelected(item)
     }
 }
 

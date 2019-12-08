@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/27/19 9:31 PM
+ *   Created by Yoga Setiawan on 12/8/19 11:26 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/27/19 9:31 PM
+ *   Last modified 12/8/19 11:25 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -25,16 +25,25 @@ import kotlinx.android.synthetic.main.activity_detail_team.*
 class DetailTeamActivity : AppCompatActivity(), DetailTeamView {
     lateinit var presenter: DetailTeamPresenter
     var data: LookupAllTeamItem? = null
+    private var favoriteMenu = 1
+    lateinit var menuButton: Menu
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail_team)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        presenter = DetailTeamPresenter(this, App.instances.repository)
+
         val dataIntent = intent.getParcelableExtra<LookupAllTeamItem>("dataTeam")
         dataIntent?.let {
             iniDetailTeam(it)
             data = dataIntent
         }
+        presenter = DetailTeamPresenter(
+            this,
+            App.instances.repository,
+            App.instances.database,
+            getDataTeam()
+        )
+        presenter.checkData()
     }
 
     private fun iniDetailTeam(data: LookupAllTeamItem) {
@@ -57,16 +66,57 @@ class DetailTeamActivity : AppCompatActivity(), DetailTeamView {
     }
 
     override fun getDataTeam() = data
+    override fun showRemoveFavoriteButton() {
+        favoriteMenu = 2
+        if (::menuButton.isInitialized) {
+            menuButton.findItem(R.id.removeFavorites).isVisible = true
+            menuButton.findItem(R.id.addFavorite).isVisible = false
+        }
+    }
+
+    override fun showAddFavoriteButton() {
+        favoriteMenu = 1
+        if (::menuButton.isInitialized) {
+            menuButton.findItem(R.id.removeFavorites).isVisible = false
+            menuButton.findItem(R.id.addFavorite).isVisible = true
+        }
+    }
+
+    override fun checkDataFinish(count: Int) {
+        if (count > 0) {
+            showRemoveFavoriteButton()
+        } else {
+            showAddFavoriteButton()
+        }
+    }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.favorite, menu)
+        if (menu != null) {
+            menuButton = menu
+        }
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu?): Boolean {
+        if (favoriteMenu == 1) {
+            menu?.findItem(R.id.removeFavorites)?.isVisible = false
+            menu?.findItem(R.id.addFavorite)?.isVisible = true
+        } else {
+            menu?.findItem(R.id.removeFavorites)?.isVisible = true
+            menu?.findItem(R.id.addFavorite)?.isVisible = false
+        }
+        return super.onPrepareOptionsMenu(menu)
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> finish()
+            R.id.addFavorite -> presenter.addFavoriteItem()
+            R.id.removeFavorites -> presenter.removeFavoriteItem()
         }
         return super.onOptionsItemSelected(item)
     }
+
 }

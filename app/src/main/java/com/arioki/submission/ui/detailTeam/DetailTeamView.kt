@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 7:48 PM
+ *   Created by Yoga Setiawan on 12/8/19 11:26 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/24/19 6:54 PM
+ *   Last modified 12/8/19 11:21 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -13,4 +13,7 @@ import com.arioki.submission.data.LookupAllTeamItem
 
 interface DetailTeamView {
     fun getDataTeam(): LookupAllTeamItem?
+    fun showRemoveFavoriteButton()
+    fun showAddFavoriteButton()
+    fun checkDataFinish(count: Int)
 }

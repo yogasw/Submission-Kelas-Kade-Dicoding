@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/24/19 1:54 PM
+ *   Created by Yoga Setiawan on 12/8/19 11:26 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/23/19 1:48 PM
+ *   Last modified 12/8/19 8:53 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -16,6 +16,7 @@ import com.arioki.submission.R
 import com.arioki.submission.adapter.PagerAdapter
 import com.arioki.submission.ui.favoriteNextEvent.FavoriteNextEventFragment
 import com.arioki.submission.ui.favoritePastEvent.FavoritePastEventFragment
+import com.arioki.submission.ui.favoriteTeam.FavoriteTeamFragment
 import kotlinx.android.synthetic.main.activity_favorite.*
 
 
@@ -31,20 +32,24 @@ class FavoriteActivity : AppCompatActivity() {
     private fun initTab() {
         val pages = listOf(
             FavoriteNextEventFragment(),
-            FavoritePastEventFragment()
+            FavoritePastEventFragment(),
+            FavoriteTeamFragment()
         )
         val title = listOf(
             "Next Match",
-            "Last Match"
+            "Last Match",
+            "Team"
         )
         viewPagerFavorite.adapter = PagerAdapter(supportFragmentManager, pages, title)
         tabFavorite.setupWithViewPager(viewPagerFavorite)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == android.R.id.home) {
-            finish()
+        when (item.itemId) {
+            android.R.id.home -> finish()
         }
         return super.onOptionsItemSelected(item)
     }
+
+
 }

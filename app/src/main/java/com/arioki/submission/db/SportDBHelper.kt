@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/12/19 8:56 AM
+ *   Created by Yoga Setiawan on 12/8/19 11:26 PM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/12/19 7:15 AM
+ *   Last modified 12/8/19 10:12 PM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -58,10 +58,21 @@ class SportDBHelper(ctx: Context) : ManagedSQLiteOpenHelper(ctx, "FavoriteEvent.
             Favorite.fstrLogoHome to TEXT,
             Favorite.fstrLogoAway to TEXT
         )
+        Team.run {
+            db.createTable(
+                tbName, true,
+                id to TEXT + PRIMARY_KEY,
+                name to TEXT,
+                country to TEXT,
+                description to TEXT
+            )
+        }
+
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
         db.dropTable(Favorite.tbName, true)
+        db.dropTable(Team.tbName, true)
     }
 
     companion object {

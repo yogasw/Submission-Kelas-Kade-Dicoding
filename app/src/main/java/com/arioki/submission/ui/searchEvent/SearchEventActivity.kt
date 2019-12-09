@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 12/8/19 5:46 PM
+ *   Created by Yoga Setiawan on 12/9/19 8:37 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 12/8/19 5:43 PM
+ *   Last modified 12/9/19 8:04 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -83,11 +83,11 @@ class SearchEventActivity : AppCompatActivity(),
 
     override fun finishSearchMatch(it: List<EventItem>) {
         val layoutManager = LinearLayoutManager(this)
-        val adapter = EventAdapter(this, it) {
+        val adapter = EventAdapter(this, it, {
             val intent = Intent(this, DetailEventActivity::class.java)
             intent.putExtra("idEvent", it.id?.toInt())
             startActivity(intent)
-        }
+        })
         rvSearch.layoutManager = layoutManager
         rvSearch.adapter = adapter
 

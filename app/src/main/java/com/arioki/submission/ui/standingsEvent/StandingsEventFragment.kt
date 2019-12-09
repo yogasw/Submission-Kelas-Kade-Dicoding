@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 12/8/19 11:31 AM
+ *   Created by Yoga Setiawan on 12/9/19 8:37 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 12/8/19 11:23 AM
+ *   Last modified 12/9/19 7:42 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -62,7 +62,7 @@ class StandingsEventFragment : Fragment(), StandingsEventView {
     }
 
     override fun getDataError(t: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
 
     override fun getDataSuccess(it: List<StandingsEventItem>) {

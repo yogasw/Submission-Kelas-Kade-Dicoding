@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
-  ~   Created by Yoga Setiawan on 11/24/19 1:54 PM
+  ~   Created by Yoga Setiawan on 12/9/19 8:37 AM
   ~   Copyright (c) 2019 . All rights reserved.
-  ~   Last modified 11/24/19 1:52 PM
+  ~   Last modified 12/9/19 7:10 AM
   ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
   ~  */
   -->
@@ -26,6 +26,7 @@
         android:textStyle="bold" />
 
     <fragment
+        android:layout_marginStart="16dp"
         android:id="@+id/fragment_next_event"
         android:name="com.arioki.submission.ui.nextEvent.NextEventFragment"
         android:layout_width="match_parent"
@@ -43,10 +44,10 @@
         android:textStyle="bold" />
 
     <fragment
+        android:layout_marginStart="16dp"
         android:id="@+id/fragment_past_event"
         android:name="com.arioki.submission.ui.pastEvent.PastEventFragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-
 
 </LinearLayout>

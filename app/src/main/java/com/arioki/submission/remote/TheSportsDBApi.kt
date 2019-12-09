@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 12/8/19 11:31 AM
+ *   Created by Yoga Setiawan on 12/9/19 8:37 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/28/19 6:04 AM
+ *   Last modified 12/9/19 7:52 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -27,40 +27,40 @@ object TheSportsDBApi {
     }
 
     interface Api {
-        @GET("lookupleague.php")
+        @GET("${BuildConfig.API_KEY}/lookupleague.php")
         fun leaguesLookupResponse(@Query("id") id: Int): Call<LeaguesLookupResponse>
 
-        @GET("eventsnextleague.php")
+        @GET("${BuildConfig.API_KEY}/eventsnextleague.php")
         fun leaguesNextEvent(@Query("id") id: Int): Call<NextEventResponse>
 
-        @GET("eventspastleague.php")
+        @GET("${BuildConfig.API_KEY}/eventspastleague.php")
         fun leaguesPastEvent(@Query("id") id: Int): Call<PastEventResponse>
 
-        @GET("lookupEvent.php")
+        @GET("${BuildConfig.API_KEY}/lookupEvent.php")
         fun lookupEvent(@Query("id") id: Int): Call<DetailEventResponse>
 
-        @GET("lookupteam.php")
+        @GET("${BuildConfig.API_KEY}/lookupteam.php")
         fun lookupTeam(@Query("id") id: Int): Call<LookupTeamResponse>
 
-        @GET("lookup_all_teams.php")
+        @GET("${BuildConfig.API_KEY}/lookup_all_teams.php")
         fun lookupAllTeam(@Query("id") id: Int): Call<LookupAllTeamResponse>
 
-        @GET("lookup_all_players.php")
+        @GET("${BuildConfig.API_KEY}/lookup_all_players.php")
         fun lookupAllPlayers(@Query("id") id: Int): Call<LookupAllPlayersResponse>
 
-        @GET("searchevents.php")
+        @GET("${BuildConfig.API_KEY}/searchevents.php")
         fun searchEvent(@Query("e") value: String): Call<SearchEventsResponse>
 
-        @GET("searchteams.php")
+        @GET("${BuildConfig.API_KEY}/searchteams.php")
         fun searchTeam(@Query("t") value: String): Call<LookupAllTeamResponse>
 
-        @GET("searchplayers.php")
+        @GET("${BuildConfig.API_KEY}/searchplayers.php")
         fun searchPlayers(@Query("p") value: String): Call<LookupAllPlayersResponse>
 
-        @GET("all_leagues.php")
+        @GET("${BuildConfig.API_KEY}/all_leagues.php")
         fun allLeagues(): Call<AllLeagueResponse>
 
-        @GET("lookuptable.php")
+        @GET("1/lookuptable.php")
         fun standingEvent(@Query("l") value: Int): Call<StandingsEventResponse>
 
     }

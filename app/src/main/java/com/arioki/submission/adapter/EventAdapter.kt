@@ -1,21 +1,24 @@
 /*
  * *
- *   Created by Yoga Setiawan on 11/27/19 9:31 PM
+ *   Created by Yoga Setiawan on 12/9/19 8:37 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/26/19 9:20 PM
+ *   Last modified 12/9/19 8:37 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
 
 package com.arioki.submission.adapter
 
+
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.arioki.submission.App
 import com.arioki.submission.R
@@ -27,10 +30,12 @@ import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.league_items.view.*
 
+
 class EventAdapter(
     private val context: Context?,
     private val items: List<EventItem>,
-    private val listener: (EventItem) -> Unit
+    private val listener: (EventItem) -> Unit,
+    private val full: Boolean = true
 ) : RecyclerView.Adapter<EventAdapter.EventViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
         return EventViewHolder(
@@ -47,7 +52,7 @@ class EventAdapter(
     }
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
-        holder.bindItem(items[position], listener)
+        holder.bindItem(items[position], listener, full)
     }
 
     class EventViewHolder(view: View) : RecyclerView.ViewHolder(view) {
@@ -57,14 +62,24 @@ class EventAdapter(
         private val tvAwayScore: TextView = view.tvDetailAwayScore
         private val ivHomeLogo: ImageView = view.ivDetailHomeLogo
         private val ivAwayLogo: ImageView = view.ivDetailAwayLogo
-
         private val shimmerHome: ShimmerFrameLayout = view.shimmerHome
         private val shimmerAway: ShimmerFrameLayout = view.shimmerAway
-
-        fun bindItem(items: EventItem, listener: (EventItem) -> Unit) {
+        private val card_view: CardView = view.card_view
+        fun bindItem(
+            items: EventItem,
+            listener: (EventItem) -> Unit,
+            full: Boolean
+        ) {
+            if (!full) {
+                itemView.card_view.layoutParams.width = FrameLayout.LayoutParams.WRAP_CONTENT
+                itemView.cr_layout.layoutParams.width =
+                    itemView.resources.getDimension(R.dimen.width_rv_item).toInt()
+            } else {
+                itemView.card_view.layoutParams.width = FrameLayout.LayoutParams.MATCH_PARENT
+                itemView.cr_layout.layoutParams.width = FrameLayout.LayoutParams.MATCH_PARENT
+            }
             tvHomeName.text = items.homeTeam
             tvAwayName.text = items.awayTeam
-
             if (items.homeTeamScore == "null" || items.homeTeamScore == null || items.homeTeamScore == "") {
                 tvHomesScore.text = "-"
             } else {

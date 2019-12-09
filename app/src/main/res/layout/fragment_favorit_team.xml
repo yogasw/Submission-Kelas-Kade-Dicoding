@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?><!--
   ~ /**
-  ~   Created by Yoga Setiawan on 12/8/19 11:26 PM
+  ~   Created by Yoga Setiawan on 12/9/19 8:37 AM
   ~   Copyright (c) 2019 . All rights reserved.
-  ~   Last modified 12/8/19 11:25 PM
+  ~   Last modified 12/9/19 6:38 AM
   ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
   ~  */
   -->
@@ -13,10 +13,9 @@
     android:layout_height="match_parent"
     tools:context=".ui.favoriteTeam.FavoriteTeamFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_favorite_team"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content" />
 
 </FrameLayout>

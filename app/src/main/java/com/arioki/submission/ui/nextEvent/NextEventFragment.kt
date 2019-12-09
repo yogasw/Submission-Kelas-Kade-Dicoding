@@ -1,8 +1,8 @@
 /*
  * *
- *   Created by Yoga Setiawan on 12/8/19 11:31 AM
+ *   Created by Yoga Setiawan on 12/9/19 8:37 AM
  *   Copyright (c) 2019 . All rights reserved.
- *   Last modified 11/28/19 8:51 AM
+ *   Last modified 12/9/19 8:37 AM
  *   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
  *
  */
@@ -32,11 +32,11 @@ class NextEventFragment : Fragment(), NextEventView {
     private var id: Int? = 0
     private lateinit var layoutManager: LinearLayoutManager
     override fun getDataDone(it: List<EventItem>) {
-        adapter = EventAdapter(context, it) {
+        adapter = EventAdapter(context, it, {
             val intent = Intent(context, DetailEventActivity::class.java)
             intent.putExtra("idEvent", it.id?.toInt())
             startActivity(intent)
-        }
+        }, false)
         rvNextMatch.layoutManager = layoutManager
         rvNextMatch.adapter = adapter
     }

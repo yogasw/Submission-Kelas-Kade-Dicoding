@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~   Created by Yoga Setiawan on 12/11/19 10:46 PM
+  ~   Copyright (c) 2019 . All rights reserved.
+  ~   Last modified 11/12/19 10:12 PM
+  ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+  ~  */
+  -->
+
+<adaptive-icon xmlns:android="http://schemas.android.com/apk/res/android">
+    <background android:drawable="@color/ic_launcher_background" />
+    <foreground android:drawable="@mipmap/ic_launcher_foreground" />
+</adaptive-icon>

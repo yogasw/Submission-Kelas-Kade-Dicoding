@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~   Created by Yoga Setiawan on 12/11/19 10:46 PM
+  ~   Copyright (c) 2019 . All rights reserved.
+  ~   Last modified 11/12/19 10:12 PM
+  ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+  ~  */
+  -->
+
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+</resources>

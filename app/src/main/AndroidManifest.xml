@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ /**
+  ~   Created by Yoga Setiawan on 12/11/19 10:46 PM
+  ~   Copyright (c) 2019 . All rights reserved.
+  ~   Last modified 11/15/19 9:03 PM
+  ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+  ~  */
+  -->
+
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.arioki.submission">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:name=".App"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".ui.FavoriteActivity" />
+        <activity
+            android:name=".ui.searchEvent.SearchEventActivity"
+            android:theme="@style/SearchTheme" />
+        <activity android:name=".ui.detailEvent.DetailEventActivity" />
+        <activity android:name=".ui.detailLiga.DetailLigaActivity" />
+        <activity android:name=".ui.DetailActivity" />
+        <activity android:name=".ui.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

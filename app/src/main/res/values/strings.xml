@@ -1,14 +1,14 @@
 <!--
   ~ /**
-  ~   Created by Yoga Setiawan on 12/11/19 10:22 PM
+  ~   Created by Yoga Setiawan on 12/11/19 10:49 PM
   ~   Copyright (c) 2019 . All rights reserved.
-  ~   Last modified 11/10/19 9:13 AM
+  ~   Last modified 12/11/19 10:49 PM
   ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
   ~  */
   -->
 
 <resources>
-    <string name="app_name">Submission1</string>
+    <string name="app_name">Submission 2</string>
     <string-array name="name">
         <item>English Premier League</item>
         <item>German Bundesliga</item>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~   Created by Yoga Setiawan on 12/11/19 10:22 PM
+  ~   Copyright (c) 2019 . All rights reserved.
+  ~   Last modified 11/10/19 11:04 AM
+  ~   Github : https://github.com/arioki1/Submission-Kelas-Kade-Dicoding.git
+  ~  */
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivLogoAway"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDateTime"
+                tools:src="@tools:sample/avatars" />
+
+            <ImageView
+                android:id="@+id/ivLogoHome"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="24dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDateTime"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvDetailNameEvent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Name Event"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+            <TextView
+                android:id="@+id/tvDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Date And Time"
+                app:layout_constraintEnd_toEndOf="@+id/tvDetailNameEvent"
+                app:layout_constraintStart_toStartOf="@+id/tvDetailNameEvent"
+                app:layout_constraintTop_toBottomOf="@+id/tvDetailNameEvent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvDetailEvent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:overScrollMode="never"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@android:color/holo_blue_light"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="25dp">
+
+                <TextView
+                    android:id="@+id/tvDetailAwayName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="@string/away_team"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/ivDetailAwayLogo"
+                    app:layout_constraintStart_toStartOf="@+id/ivDetailAwayLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/ivDetailAwayLogo" />
+
+                <ImageView
+                    android:id="@+id/ivDetailHomeLogo"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="32dp"
+                    android:contentDescription="@string/logo_home_team"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/tvDetailHomeName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="32dp"
+                    android:text="@string/home_team"
+                    android:textColor="@android:color/white"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/ivDetailHomeLogo"
+                    app:layout_constraintStart_toStartOf="@+id/ivDetailHomeLogo"
+                    app:layout_constraintTop_toBottomOf="@+id/ivDetailHomeLogo" />
+
+                <TextView
+                    android:id="@+id/tvDetailHomeScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginRight="8dp"
+                    android:text="@string/min"
+                    android:textColor="@android:color/white"
+                    android:textSize="50sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvDetailHomeName"
+                    app:layout_constraintEnd_toStartOf="@+id/textView4"
+                    app:layout_constraintTop_toTopOf="@+id/ivDetailHomeLogo" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/colon"
+                    android:textColor="@android:color/white"
+                    android:textSize="30sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvDetailHomeScore"
+                    app:layout_constraintEnd_toStartOf="@+id/ivDetailAwayLogo"
+                    app:layout_constraintStart_toEndOf="@+id/ivDetailHomeLogo"
+                    app:layout_constraintTop_toTopOf="@+id/tvDetailHomeScore" />
+
+                <TextView
+                    android:id="@+id/tvDetailAwayScore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:text="@string/min"
+                    android:textColor="@android:color/white"
+                    android:textSize="50sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/tvDetailAwayName"
+                    app:layout_constraintStart_toEndOf="@+id/textView4"
+                    app:layout_constraintTop_toTopOf="@+id/ivDetailAwayLogo" />
+
+                <ImageView
+                    android:id="@+id/ivDetailAwayLogo"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginRight="32dp"
+                    android:contentDescription="@string/logo_away_team"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivLogoHome">
+
+                <TextView
+                    android:id="@+id/tvHomeName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:baselineAligned="false" />
+
+                <TextView
+                    android:id="@+id/tvAwayName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="1"
+                    android:gravity="end" />
+            </LinearLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmeDetailEvent"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                app:duration="700"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/rvDetailEvent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerDateTime"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:duration="700"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDateTime"
+                app:layout_constraintEnd_toEndOf="@+id/tvDateTime"
+                app:layout_constraintStart_toStartOf="@+id/tvDateTime"
+                app:layout_constraintTop_toTopOf="@+id/tvDateTime">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerDetailNameEvent"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:duration="700"
+                app:layout_constraintBottom_toBottomOf="@+id/tvDetailNameEvent"
+                app:layout_constraintEnd_toEndOf="@+id/tvDetailNameEvent"
+                app:layout_constraintStart_toStartOf="@+id/tvDetailNameEvent"
+                app:layout_constraintTop_toTopOf="@+id/tvDetailNameEvent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLogoHomeyDetail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:duration="700"
+                app:layout_constraintBottom_toBottomOf="@+id/ivLogoHome"
+                app:layout_constraintEnd_toEndOf="@+id/ivLogoHome"
+                app:layout_constraintStart_toStartOf="@+id/ivLogoHome"
+                app:layout_constraintTop_toTopOf="@+id/ivLogoHome">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerLogoAwayDetail"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:duration="700"
+                app:layout_constraintBottom_toBottomOf="@+id/ivLogoAway"
+                app:layout_constraintEnd_toEndOf="@+id/ivLogoAway"
+                app:layout_constraintStart_toStartOf="@+id/ivLogoAway"
+                app:layout_constraintTop_toTopOf="@+id/ivLogoAway">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+
+            <com.facebook.shimmer.ShimmerFrameLayout
+                android:id="@+id/shimmerConstraintLayout"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:duration="700"
+                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+                app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+                app:layout_constraintTop_toTopOf="@+id/constraintLayout">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/darker_gray" />
+            </com.facebook.shimmer.ShimmerFrameLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
